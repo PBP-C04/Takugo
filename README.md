@@ -36,17 +36,9 @@ Berdasarkan latar belakang di atas, Takugo hadir sebagai platform yang bertujuan
 Dataset untuk buku-buku yang tersedia pada Takugo dapat diakses melalui link [ini](https://www.kaggle.com/datasets/nikhil1e9/myanimelist-anime-and-manga?select=MAL-manga.csv). 
 
 ## Role
-- Registered User
-
-    Dapat mengakses semua fitur.
-
-- Non-Registered User
-
-    Hanya mendapat akses viewer pada sebagian fitur, yaitu forum diskusi dan review.
-
-- Lembaga Donasi
-
-    Bisa melihat buku apa saja yang sudah didonasikan oleh registered user.
+| Lembaga | Registered User | Non-Registered User |
+| --- | --- | --- |
+| Bisa melihat buku apa saja yang sudah didonasikan oleh registered user. | Dapat mengakses semua fitur. | Hanya mendapat akses *viewer* pada sebagian fitur. |
 
 ## Daftar Modul
 Berikut adalah beberapa fitur yang disediakan pada aplikasi Takugo:
