@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+<form method="POST" action="">
+    {% csrf_token %}
+    <input type="text" placeholder="Username" name="username" id="username">
+    <input type="password" placeholder="Password" name="password" id="password">
+    <input type="submit">
+</form>
+{% endblock content %}

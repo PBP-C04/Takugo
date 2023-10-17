@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'main',
 ]
 
+AUTH_USER_MODEL = 'main.TakugoUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'Takugo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

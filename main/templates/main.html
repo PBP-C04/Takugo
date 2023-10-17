@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Takugo: Otaku on the Go!</title>
+{% endblock meta %}
+
+{% block content %}
+<a href="{% url 'main:register' %}"><button>Register</button></a>
+<a href="{% url 'main:login' %}"><button>Login</button></a>
+<a href="{% url 'main:settings' %}"><button>Settings</button></a>
+{% endblock content %}
