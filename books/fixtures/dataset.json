@@ -1,0 +1,1322 @@
+[
+  {
+    "model": "books.book",
+    "pk": 1,
+    "fields": {
+      "title": "City Hunter",
+      "book_type": "MGA",
+      "volumes": 35,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/5/272237.jpg?s=91027a075fc64be41ed3f44b0186cc64",
+      "score": 8.16
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 2,
+    "fields": {
+      "title": "Keijo!!!!!!!!",
+      "book_type": "MGA",
+      "volumes": 18,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/168393.jpg?s=630ab39042bfd9b95226a974cb5920b3",
+      "score": 7.31
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 3,
+    "fields": {
+      "title": "Uchuu Senkan Yamato",
+      "book_type": "MGA",
+      "volumes": 3,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/284283.jpg?s=18071abe2d33c7585485a9f90a743049",
+      "score": 6.74
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 4,
+    "fields": {
+      "title": "Confession",
+      "book_type": "MGA",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/13085.jpg?s=285e4f27a7be4d0d43cf08e44c5dc109",
+      "score": 7.32
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 5,
+    "fields": {
+      "title": "Ibara no Namida",
+      "book_type": "MGA",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/61707.jpg?s=e3ab7f88a18db79595cd8ca87ca04c43",
+      "score": 6.71
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 6,
+    "fields": {
+      "title": "Inuyashiki",
+      "book_type": "MGA",
+      "volumes": 10,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/156353.jpg?s=ded4aa7026a2a2a078ee791cb0e31fea",
+      "score": 7.59
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 7,
+    "fields": {
+      "title": "Hinamizawa Teiryuujo: Higurashi no Naku Koro ni Genten",
+      "book_type": "MGA",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/176843.jpg?s=5a4a82706455a162bea471909d89e674",
+      "score": 6.9
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 8,
+    "fields": {
+      "title": "Jinrui wo Metsubou sasete wa Ikemasen",
+      "book_type": "MGA",
+      "volumes": 4,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/244404.jpg?s=a02c3aa6b2fca61eb5b0d2fee2b93698",
+      "score": 7.9
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 9,
+    "fields": {
+      "title": "Mononoke: Umibouzu",
+      "book_type": "MGA",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/155676.jpg?s=8d200163e6476ebde4f0f468844b8e82",
+      "score": 7.31
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 10,
+    "fields": {
+      "title": "Kedamono ni Lollipop",
+      "book_type": "MGA",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/169130.jpg?s=a90b0ccf9914cc1e1f78f22a50b49d9e",
+      "score": 6.84
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 11,
+    "fields": {
+      "title": "High School! Kimengumi",
+      "book_type": "MGA",
+      "volumes": 20,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/187153.jpg?s=c4519c88dd023107704190cbd4e4c84f",
+      "score": 7.52
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 12,
+    "fields": {
+      "title": "Tounan Kadobeya Kare no Koi",
+      "book_type": "MGA",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/221589.jpg?s=db3d9938a3e3480189c1ffde5ee3b0bf",
+      "score": 6.45
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 13,
+    "fields": {
+      "title": "Kabu no Isaki",
+      "book_type": "MGA",
+      "volumes": 6,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/52905.jpg?s=12602f6e473e8a51dc61710164dde80b",
+      "score": 7.49
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 14,
+    "fields": {
+      "title": "Finlandia: Santa Yousei Gakkou",
+      "book_type": "MGA",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/152674.jpg?s=f7972a06597951b24014fbe1310ed9de",
+      "score": 6.63
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 15,
+    "fields": {
+      "title": "Youkai Niisan",
+      "book_type": "MGA",
+      "volumes": 4,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/202968.jpg?s=e2dd0509b200a33f69b622fb6a0d9f80",
+      "score": 6.94
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 16,
+    "fields": {
+      "title": "Mamacolle",
+      "book_type": "MGA",
+      "volumes": 4,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/19669.jpg?s=8a9bdd7857a7d4bdae14838b5b01e050",
+      "score": 7.26
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 17,
+    "fields": {
+      "title": "DoLL",
+      "book_type": "MGA",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/58489.jpg?s=398c5299972a89d3fc146aa2050d0c6b",
+      "score": 6.23
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 18,
+    "fields": {
+      "title": "Sensor",
+      "book_type": "MGA",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/224108.jpg?s=859de571570ffa1df0b55fe71776a81e",
+      "score": 6.85
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 19,
+    "fields": {
+      "title": "Kaikisen",
+      "book_type": "MGA",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/157831.jpg?s=a253c1934b98f561915de2393e6df57f",
+      "score": 6.69
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 20,
+    "fields": {
+      "title": "Boku wa Oneko-sama no Geboku desu.",
+      "book_type": "MGA",
+      "volumes": 4,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/241159.jpg?s=d6209a6d7ee44136be02dae27165d0a4",
+      "score": 6.96
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 21,
+    "fields": {
+      "title": "Durarara!!",
+      "book_type": "LNV",
+      "volumes": 13,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/28766.jpg?s=752243c94ac9dc6472962ffa23f7d339",
+      "score": 8.34
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 22,
+    "fields": {
+      "title": "Komata-kun to Komata-chan",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/203756.jpg?s=479e5d913f62bfc597b872d21015374c",
+      "score": 6.2
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 23,
+    "fields": {
+      "title": "Douki to Tawawa",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/274165.jpg?s=886c9bf02fa96bdc4dbf8b325e94bc99",
+      "score": 6.64
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 24,
+    "fields": {
+      "title": "11th Cat",
+      "book_type": "MHW",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/5/30204.jpg?s=a490269c564aaf7cb34fb560e7fc72ec",
+      "score": 6.18
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 25,
+    "fields": {
+      "title": "Yurikamone",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/110283.jpg?s=e7b3772fdbfdcaaaf297bb4f9c45488b",
+      "score": 6.42
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 26,
+    "fields": {
+      "title": "Blood-C: The Last Dark",
+      "book_type": "LNV",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/67363.jpg?s=a4d77cba2bd9481fdbda3cf56bc7cd00",
+      "score": 7.14
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 27,
+    "fields": {
+      "title": "DVD",
+      "book_type": "MHW",
+      "volumes": 8,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/30185.jpg?s=0e0dc11274a444abd02d9a9b91f83e2a",
+      "score": 7.31
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 28,
+    "fields": {
+      "title": "I do I do",
+      "book_type": "MHW",
+      "volumes": 15,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/32725.jpg?s=1e035fcfc4fd0f97f6c222246b52724c",
+      "score": 6.84
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 29,
+    "fields": {
+      "title": "0/6",
+      "book_type": "MHW",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/5/30274.jpg?s=5473ba4bdec296633bee49680fbbb559",
+      "score": 5.65
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 30,
+    "fields": {
+      "title": "One Piece Novel: Mugiwara Stories",
+      "book_type": "LNV",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/232215.jpg?s=6d7a5aad4c86603147998c378413a3e7",
+      "score": 6.99
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 31,
+    "fields": {
+      "title": "Kono Subarashii Sekai ni Shukufuku wo!",
+      "book_type": "LNV",
+      "volumes": 17,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/174932.jpg?s=22947fdd654b3ecf5d2a334bb4140ea7",
+      "score": 8.62
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 32,
+    "fields": {
+      "title": "Shokugeki no Souma: \u00e0 la Carte",
+      "book_type": "LNV",
+      "volumes": 3,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/120167.jpg?s=42cefcb662ccea3eca43409726628686",
+      "score": 7.53
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 33,
+    "fields": {
+      "title": "Jinrui wa Suitai Shimashita",
+      "book_type": "LNV",
+      "volumes": 9,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/123725.jpg?s=adb4bff04a075e929e9612d8ab99edd1",
+      "score": 7.73
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 34,
+    "fields": {
+      "title": "Dokgo",
+      "book_type": "MHW",
+      "volumes": 6,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/190706.jpg?s=71e1ce8d5f99f7c2e61e99476cdc65bd",
+      "score": 7.75
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 35,
+    "fields": {
+      "title": "InuYasha",
+      "book_type": "LNV",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/88555.jpg?s=d6c7e31fc38389da91717e4f460a2d8a",
+      "score": 7.54
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 36,
+    "fields": {
+      "title": "Shakugan no Shana",
+      "book_type": "LNV",
+      "volumes": 22,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/133565.jpg?s=e06d2291686804c48fcec57e7947f793",
+      "score": 7.93
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 37,
+    "fields": {
+      "title": "Roman Album: Taishou Dennou Dadaism Emaki - Despera",
+      "book_type": "LNV",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/114873.jpg?s=3b893c33f50b390474e1020664d535d0",
+      "score": 7.04
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 38,
+    "fields": {
+      "title": "Cho-co-la-te.",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/77403.jpg?s=d427c818fbcda4a2ebfa15d0263c3411",
+      "score": 6.52
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 39,
+    "fields": {
+      "title": "Dear Diary",
+      "book_type": "MHW",
+      "volumes": 4,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/32177.jpg?s=ce54e5a3fe31dcd1301f052e1a6c3658",
+      "score": 6.7
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 40,
+    "fields": {
+      "title": "Coy - Crush On You",
+      "book_type": "MHW",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/82962.jpg?s=ba24c9a4a97630bb3798bfd4d4925aa8",
+      "score": 7.08
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 41,
+    "fields": {
+      "title": "Kamigoroshi no Eiyuu to Ermenhilde",
+      "book_type": "LNV",
+      "volumes": 7,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/163818.jpg?s=8d4f176b880b3648d349ce2027b40841",
+      "score": 7.08
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 42,
+    "fields": {
+      "title": "Psycho-Pass",
+      "book_type": "LNV",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/118865.jpg?s=aee1697af39d6b4f133929022c38865e",
+      "score": 7.67
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 43,
+    "fields": {
+      "title": "Sono Yubi dake ga Shitteiru",
+      "book_type": "LNV",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/20114.jpg?s=690a99a3132375659168f182bd5f3def",
+      "score": 7.8
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 44,
+    "fields": {
+      "title": "Li Ren Man",
+      "book_type": "MHU",
+      "volumes": 3,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/283562.jpg?s=15afe06976bdb132eddadec5672bb8c8",
+      "score": 6.9
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 45,
+    "fields": {
+      "title": "Itsuka Tenma no Kuro Usagi",
+      "book_type": "LNV",
+      "volumes": 13,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/81153.jpg?s=9a25f6fc0c9fcc6318b47c6ab81aaf78",
+      "score": 7.27
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 46,
+    "fields": {
+      "title": "Chronicles of the Cursed Sword",
+      "book_type": "MHW",
+      "volumes": 37,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/243134.jpg?s=68833b855ff85b18672fd200c1595d12",
+      "score": 6.94
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 47,
+    "fields": {
+      "title": "Yabai Kimochi",
+      "book_type": "LNV",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/159372.jpg?s=c5a8fd13a1eb7de25228e38843735628",
+      "score": 7.08
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 48,
+    "fields": {
+      "title": "I.N.V.U.",
+      "book_type": "MHW",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/247887.jpg?s=5377f940d927b12a7f1246ac09ed15ab",
+      "score": 6.89
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 49,
+    "fields": {
+      "title": ".hack//Tasogare no Hibun",
+      "book_type": "LNV",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/26763.jpg?s=ca169ceb975fabf16ab3fbbba4bb09a7",
+      "score": 7.22
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 50,
+    "fields": {
+      "title": "Zippy Ziggy",
+      "book_type": "MHW",
+      "volumes": 11,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/11365.jpg?s=0eaed6a2c4b5e96715765123b374e975",
+      "score": 7.46
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 51,
+    "fields": {
+      "title": "Incandescent Moon",
+      "book_type": "MHU",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/15786.jpg?s=4f026d01e7cf8ba81a21dd35530d34fb",
+      "score": 7.05
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 52,
+    "fields": {
+      "title": "Seiken Tsukai no World Break",
+      "book_type": "LNV",
+      "volumes": 22,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/177486.jpg?s=2d6ad2adc8022a87365f8b9dbb5bea70",
+      "score": 7.23
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 53,
+    "fields": {
+      "title": "09Summer",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/97567.jpg?s=d6e630a58dc5ec83bd19207b5b6c4ca6",
+      "score": 6.01
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 54,
+    "fields": {
+      "title": "Soshite Kaede wa Hanayaka ni Saku",
+      "book_type": "DJS",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/250257.jpg?s=1f8058b9d5f5a698bf7cafa3f37b5010",
+      "score": 6.72
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 55,
+    "fields": {
+      "title": "Intellectual Village no Zashiki Warashi",
+      "book_type": "LNV",
+      "volumes": 9,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/175614.jpg?s=b03ca105edf000ff2d637d90be0db554",
+      "score": 7.54
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 56,
+    "fields": {
+      "title": "Romance Papa",
+      "book_type": "MHW",
+      "volumes": 8,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/4/30307.jpg?s=e5517c3d95d016f3d9d232d543574c58",
+      "score": 7.25
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 57,
+    "fields": {
+      "title": "Pray for Japan",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/152443.jpg?s=4790ee154d1a2bb4777549ef1a27f531",
+      "score": 7.09
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 58,
+    "fields": {
+      "title": "Can't See Can't Hear But Love",
+      "book_type": "MHW",
+      "volumes": 6,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/268900.jpg?s=bcff2f4c5da1e4a2b24e7314cfba2d4c",
+      "score": 8.13
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 59,
+    "fields": {
+      "title": "Zero",
+      "book_type": "MHW",
+      "volumes": 10,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/11366.jpg?s=005a05ae4ea4498179d4465256313f95",
+      "score": 7.34
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 60,
+    "fields": {
+      "title": "My Brother and Boyfriend, and He",
+      "book_type": "MHW",
+      "volumes": 10,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/25283.jpg?s=57a0a474a1a4f8be04ca438232af365f",
+      "score": 6.82
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 61,
+    "fields": {
+      "title": "One Day",
+      "book_type": "MHU",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/14045.jpg?s=a4dcf20b9115255ee99dc5ab4bb7cbe4",
+      "score": 6.71
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 62,
+    "fields": {
+      "title": "Violet Evergarden Gaiden",
+      "book_type": "LNV",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/224184.jpg?s=3f7cd81ba3b38a03d60a709078aa4fa5",
+      "score": 8.31
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 63,
+    "fields": {
+      "title": "Boku no Hero Academia the Movie: Futari no Hero",
+      "book_type": "LNV",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/243325.jpg?s=1fff51b98b0be32586982d2faa233c90",
+      "score": 7.06
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 64,
+    "fields": {
+      "title": "Isekai Goumon-hime",
+      "book_type": "LNV",
+      "volumes": 10,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/175275.jpg?s=8e139478360b5108e36d559e1f0f01b8",
+      "score": 7.79
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 65,
+    "fields": {
+      "title": "Honorable Baek Dong Soo",
+      "book_type": "MHW",
+      "volumes": 9,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/51323.jpg?s=0b111ffceed4e7a8c5c74094c1914b64",
+      "score": 6.92
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 66,
+    "fields": {
+      "title": "New Mok Yeon-Ah Honeymoon Diary",
+      "book_type": "MHW",
+      "volumes": 13,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/35711.jpg?s=22dc2906dfb0d6d20cd1a9c96168608f",
+      "score": 6.9
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 67,
+    "fields": {
+      "title": "Her Tale of Shim Chong",
+      "book_type": "MHW",
+      "volumes": 7,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/229462.jpg?s=8c0199b59c0da5ea74e4575dff3a0d28",
+      "score": 8.1
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 68,
+    "fields": {
+      "title": "Sword Art Online dj - Lisbeth Edition",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/4/73281.jpg?s=d71159220dd4212e6ad07ec2b4058952",
+      "score": 7.15
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 69,
+    "fields": {
+      "title": "Hangah, Lee",
+      "book_type": "MHW",
+      "volumes": 7,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/22823.jpg?s=0933e0946a6fbcc33f5de84a3eff4386",
+      "score": 6.87
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 70,
+    "fields": {
+      "title": "I Want You",
+      "book_type": "MHW",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/91759.jpg?s=57fba65fc748c411f1255bc8d61cef2a",
+      "score": 6.5
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 71,
+    "fields": {
+      "title": "Peak",
+      "book_type": "MHW",
+      "volumes": 7,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/78763.jpg?s=2364c8d9e73d36a591fa2140b1131b97",
+      "score": 7.45
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 72,
+    "fields": {
+      "title": "Fukushoku Joshi",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/159814.jpg?s=907c4d5af89bc0f868eadb8698a11ac2",
+      "score": 6.0
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 73,
+    "fields": {
+      "title": "Agreement of the Glass Shoes",
+      "book_type": "MHU",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/34940.jpg?s=3b41cc4436ec7dee20651300f03703f6",
+      "score": 6.59
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 74,
+    "fields": {
+      "title": "The One",
+      "book_type": "MHU",
+      "volumes": 18,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/16312.jpg?s=282a27f6dde4e65d34f7f56a7e16f011",
+      "score": 8.18
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 75,
+    "fields": {
+      "title": "Valentine's Magic",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/150097.jpg?s=75b9d31c5803410f1c7f2159c6bd8a40",
+      "score": 6.5
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 76,
+    "fields": {
+      "title": "Qishi Huanxiang Ye",
+      "book_type": "MHU",
+      "volumes": 24,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/222763.jpg?s=4082fcc0192969a2316dbe7a025e320c",
+      "score": 7.26
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 77,
+    "fields": {
+      "title": "Nise x Koi Boyfriend dj - Henshin Shichau",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/143613.jpg?s=d4088edd3c4634f45a04aaeacea3f3fb",
+      "score": 6.45
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 78,
+    "fields": {
+      "title": "Luo Xue Cheng Bai",
+      "book_type": "MHU",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/20203.jpg?s=45fefe891c5d2ea8b6a02d3ccc909f90",
+      "score": 6.98
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 79,
+    "fields": {
+      "title": "Renai Shoshinsha Yankee Joshi Manga Matomebon",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/242232.jpg?s=49e0945eab715527950d5fc6b038cb25",
+      "score": 6.8
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 80,
+    "fields": {
+      "title": "Xu Ge Yuan Ba! Da Xi",
+      "book_type": "MHU",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/202146.jpg?s=ecb1d6b9f950ccee483e9dcdbddde1a6",
+      "score": 7.29
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 81,
+    "fields": {
+      "title": "Wolf & Mary",
+      "book_type": "MHU",
+      "volumes": 3,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/99671.jpg?s=687fe6496cc850e73500109a0aebcfc1",
+      "score": 6.69
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 82,
+    "fields": {
+      "title": "Onna no Hadaka wo Nama de Mitai",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/235191.jpg?s=31c541e2d4c0d3ce7b759273b36cc24f",
+      "score": 6.58
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 83,
+    "fields": {
+      "title": "Shousetsu Tenki no Ko",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/265837.jpg?s=ace1edb30b757439fb811dfca7965af7",
+      "score": 7.6
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 84,
+    "fields": {
+      "title": "\u25cfRec",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/128519.jpg?s=797f7c2cabafb93419c44c4a3a925ae2",
+      "score": 7.26
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 85,
+    "fields": {
+      "title": "Murazukuri Game no NPC ga Namami no Ningen to shika Omoenai",
+      "book_type": "NVL",
+      "volumes": 3,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/254168.jpg?s=7b61f67ef53e2a10224c2e73b7c7e9f3",
+      "score": 7.27
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 86,
+    "fields": {
+      "title": "Sword Art Online dj - Silica Edition",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/81604.jpg?s=cd1e73b8b6653b80d464061af8c50635",
+      "score": 6.92
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 87,
+    "fields": {
+      "title": "Ameiro Kouchakan Souwa: Lilyca",
+      "book_type": "DJS",
+      "volumes": 3,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/98045.jpg?s=cfddabc9f0fe00b8ea170c2aeda2bead",
+      "score": 7.0
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 88,
+    "fields": {
+      "title": "Kiss wa Owari de Hajimari de",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/152169.jpg?s=d0cb59f4bc6bcb076f2697591a9adda6",
+      "score": 6.81
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 89,
+    "fields": {
+      "title": "Youth Gone Wild",
+      "book_type": "MHU",
+      "volumes": 14,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/3223.jpg?s=566132e995fa2fc9a3c5edf3e063b233",
+      "score": 7.59
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 90,
+    "fields": {
+      "title": "Ardour",
+      "book_type": "MHU",
+      "volumes": 12,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/31435.jpg?s=8759f0202651fa6a83ea1ad127f18810",
+      "score": 7.13
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 91,
+    "fields": {
+      "title": "Kamisama no Ude no Naka de dj - Strauss wa Ichinensei",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/20454.jpg?s=d8041f7c46a434be1363b757a9cee8b1",
+      "score": 6.7
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 92,
+    "fields": {
+      "title": "Siscon Ani to Brocon Imouto ga Fuufu ni Nattara Shiawase Sugite Bakuhatsu Shisou",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/265872.jpg?s=fab0b4532fa8b24513ff835db5acbe8a",
+      "score": 6.94
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 93,
+    "fields": {
+      "title": "Inu Usa Neko",
+      "book_type": "DJS",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/13189.jpg?s=8401cab6271879253e9bf34432fdcaf7",
+      "score": 6.14
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 94,
+    "fields": {
+      "title": "Solo Leveling",
+      "book_type": "NVL",
+      "volumes": 13,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/265759.jpg?s=b53531b77e1558690c35a36eac5e2837",
+      "score": 7.72
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 95,
+    "fields": {
+      "title": "Ginga Eiyuu Densetsu",
+      "book_type": "NVL",
+      "volumes": 10,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/5/155231.jpg?s=9bd5d23b755e5e1aacbcb3b1519578ea",
+      "score": 8.6
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 96,
+    "fields": {
+      "title": "Shadow of Visions",
+      "book_type": "MHU",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/268400.jpg?s=849ef8193d101d8257b62f0f2e1ea452",
+      "score": 6.9
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 97,
+    "fields": {
+      "title": "China Girls",
+      "book_type": "MHU",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/44667.jpg?s=167c7bbd0068c2b9dad761db878077e5",
+      "score": 6.53
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 98,
+    "fields": {
+      "title": "Mikkakan no Koufuku",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/248674.jpg?s=8906356663b1d4bac9c708b903a4fe2b",
+      "score": 8.92
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 99,
+    "fields": {
+      "title": "F.O.X",
+      "book_type": "MHU",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/5/53751.jpg?s=670bb26eb3f513d6df0cd1b9da52c454",
+      "score": 6.87
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 100,
+    "fields": {
+      "title": "Zhong Xia Ye Zhi Meng",
+      "book_type": "MHU",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/32963.jpg?s=b986cd20bf3e7adf8271e6253772d430",
+      "score": 6.44
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 101,
+    "fields": {
+      "title": "No.6",
+      "book_type": "NVL",
+      "volumes": 9,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/129825.jpg?s=89e5a739172757c7157fe7183c198a06",
+      "score": 8.4
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 102,
+    "fields": {
+      "title": "Mawaru Penguindrum",
+      "book_type": "NVL",
+      "volumes": 3,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/167526.jpg?s=c59483c70411deb16c72a90bada83395",
+      "score": 7.66
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 103,
+    "fields": {
+      "title": "Digimon Zero Two",
+      "book_type": "MHU",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/32658.jpg?s=92d9a73be03536a34f6bb610a9a7e73f",
+      "score": 6.62
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 104,
+    "fields": {
+      "title": "Fated to Love You",
+      "book_type": "MHU",
+      "volumes": 3,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/28452.jpg?s=44dbc94de65af134641111567616f28c",
+      "score": 6.76
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 105,
+    "fields": {
+      "title": "Konyaku Haki kara Hajimaru Akuyaku Reijou no Kangoku Slow Life",
+      "book_type": "NVL",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/248897.jpg?s=033a64fe216b9052dfb76db582236f0e",
+      "score": 7.19
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 106,
+    "fields": {
+      "title": "Melancholic Princess",
+      "book_type": "MHU",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/5/88339.jpg?s=cc0154bdecd08e7a8d7556e8b00aa656",
+      "score": 6.51
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 107,
+    "fields": {
+      "title": "Kimi wa Tsukiyo ni Hikarikagayaku",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/248569.jpg?s=794e19b86f555ab8b4eedf199989d7a0",
+      "score": 7.77
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 108,
+    "fields": {
+      "title": "Fantastic Tales",
+      "book_type": "MHU",
+      "volumes": 5,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/1440.jpg?s=19fd137256bd3f703b020485ad4642cb",
+      "score": 6.76
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 109,
+    "fields": {
+      "title": "Lian Ai Make\u2665Up!",
+      "book_type": "MHU",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/90351.jpg?s=d3c1f75223a2ccf34a63a03cf270c3b3",
+      "score": 6.57
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 110,
+    "fields": {
+      "title": "Rasen",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/270798.jpg?s=bb81fc1cbbb2978164de369bc88bfce0",
+      "score": 7.4
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 111,
+    "fields": {
+      "title": "Shousetsu Kimi no Na wa.",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/230890.jpg?s=f952e09124578bd8f54e990ee6904f07",
+      "score": 8.3
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 112,
+    "fields": {
+      "title": "Uchiage Hanabi, Shita kara Miru ka? Yoko kara Miru ka?",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/230776.jpg?s=b5af4f4f720cfd89a0297b76f229e357",
+      "score": 6.87
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 113,
+    "fields": {
+      "title": "Another",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/238121.jpg?s=7a96ed5c2cb830a6631b213dfa3dec02",
+      "score": 7.85
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 114,
+    "fields": {
+      "title": "Summer Wars",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/208973.jpg?s=2160b05c702f9debdcc9619738501aae",
+      "score": 7.4
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 115,
+    "fields": {
+      "title": "Shinrei Tantei Yakumo",
+      "book_type": "NVL",
+      "volumes": 12,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/29788.jpg?s=d5a7264783bd4dfdab30f31f1af29786",
+      "score": 7.87
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 116,
+    "fields": {
+      "title": "Ring",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/270795.jpg?s=aab23962ca0d25403a781b58506d615c",
+      "score": 7.48
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 117,
+    "fields": {
+      "title": "Solo Leveling Side Story",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/275479.jpg?s=756be0dcb50a40c1954712f64b0cc350",
+      "score": 6.97
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 118,
+    "fields": {
+      "title": "Shinsekai yori",
+      "book_type": "NVL",
+      "volumes": 2,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/248692.jpg?s=d9f61d386c2ef3740a1f9e921bff0306",
+      "score": 7.77
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 119,
+    "fields": {
+      "title": "Tian Guan Ci Fu",
+      "book_type": "NVL",
+      "volumes": 6,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/258775.jpg?s=f5bf27d3664970531827df9a7f37192a",
+      "score": 8.55
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 120,
+    "fields": {
+      "title": "No.6 Beyond",
+      "book_type": "NVL",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/81189.jpg?s=e687e1cbfdccd5275216ab61d5a7ea21",
+      "score": 8.18
+    }
+  }
+]

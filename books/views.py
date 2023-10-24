@@ -7,11 +7,13 @@ from django.contrib.auth.decorators import login_required
 from books.models import Book, BoughtBook
 
 # Create your views here.
-@login_required(login_url="/login")
 def show_main(request: HttpRequest) -> HttpResponse:
     context = {
-        "name": request.user.username,
+        "name": "Guest",
     }
+
+    if request.user.is_authenticated:
+        context["name"] = request.user.username
 
     return render(request, "books.html", context)
 

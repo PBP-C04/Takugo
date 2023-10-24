@@ -5,7 +5,7 @@ app_name = "books"
 
 urlpatterns = [
     path("", show_main, name="show_main"),
-    path("book-list", get_book_list, name="get_book_list"),
-    path("book-bought", get_book_bought, name="get_book_bought"),
+    path("api/book-list", get_book_list, name="get_book_list"),
+    path("api/book-bought", get_book_bought, name="get_book_bought"),
     path("buy-book/<int:id>", buy_book, name="buy_book"),
 ]
