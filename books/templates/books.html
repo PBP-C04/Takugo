@@ -30,7 +30,7 @@
     // }
 
     async function getBookList(filter) {
-        return fetch("{% url 'books:get_book_list' %}" + `?filter=${filter}`)
+        return fetch(`{% url 'books:get_book_list' %}?filter=${filter}`)
             .then((res) => res.json());
     }
 
@@ -47,21 +47,22 @@
                 <tr>
                     <th></th>
                     <th>Title</th>
-                    <th>Type</th>
                     <th>Volumes</th>
                     <th>Score</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
         `;
         books.forEach((book) => {
+            const buyUrl = "{% url 'books:buy_book' id=0 %}".replace("0", book.pk);
             htmlString += `
                 <tr>
                     <td><img src=${book.fields.image_url}></td>
                     <td>${book.fields.title}</td>
-                    <td>${book.fields.book_type}</td>
                     <td>${book.fields.volumes}</td>
                     <td>${book.fields.score}</td>
+                    <td><a href="${buyUrl}"><button>Buy</button></a></td>
                 </tr>
             `;
         });

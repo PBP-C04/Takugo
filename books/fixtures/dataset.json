@@ -25,17 +25,6 @@
     "model": "books.book",
     "pk": 3,
     "fields": {
-      "title": "Watashi no Fushidara",
-      "book_type": "MGA",
-      "volumes": 2,
-      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/195205.jpg?s=bf37e6541ed445b79ac486401226e59d",
-      "score": 6.07
-    }
-  },
-  {
-    "model": "books.book",
-    "pk": 4,
-    "fields": {
       "title": "Uchuu Senkan Yamato",
       "book_type": "MGA",
       "volumes": 3,
@@ -45,7 +34,7 @@
   },
   {
     "model": "books.book",
-    "pk": 5,
+    "pk": 4,
     "fields": {
       "title": "Confession",
       "book_type": "MGA",
@@ -56,7 +45,7 @@
   },
   {
     "model": "books.book",
-    "pk": 6,
+    "pk": 5,
     "fields": {
       "title": "Ibara no Namida",
       "book_type": "MGA",
@@ -67,7 +56,7 @@
   },
   {
     "model": "books.book",
-    "pk": 7,
+    "pk": 6,
     "fields": {
       "title": "Inuyashiki",
       "book_type": "MGA",
@@ -78,7 +67,7 @@
   },
   {
     "model": "books.book",
-    "pk": 8,
+    "pk": 7,
     "fields": {
       "title": "Hinamizawa Teiryuujo: Higurashi no Naku Koro ni Genten",
       "book_type": "MGA",
@@ -89,7 +78,7 @@
   },
   {
     "model": "books.book",
-    "pk": 9,
+    "pk": 8,
     "fields": {
       "title": "Jinrui wo Metsubou sasete wa Ikemasen",
       "book_type": "MGA",
@@ -100,7 +89,7 @@
   },
   {
     "model": "books.book",
-    "pk": 10,
+    "pk": 9,
     "fields": {
       "title": "Mononoke: Umibouzu",
       "book_type": "MGA",
@@ -111,7 +100,7 @@
   },
   {
     "model": "books.book",
-    "pk": 11,
+    "pk": 10,
     "fields": {
       "title": "Kedamono ni Lollipop",
       "book_type": "MGA",
@@ -122,7 +111,7 @@
   },
   {
     "model": "books.book",
-    "pk": 12,
+    "pk": 11,
     "fields": {
       "title": "High School! Kimengumi",
       "book_type": "MGA",
@@ -133,7 +122,7 @@
   },
   {
     "model": "books.book",
-    "pk": 13,
+    "pk": 12,
     "fields": {
       "title": "Tounan Kadobeya Kare no Koi",
       "book_type": "MGA",
@@ -144,7 +133,7 @@
   },
   {
     "model": "books.book",
-    "pk": 14,
+    "pk": 13,
     "fields": {
       "title": "Kabu no Isaki",
       "book_type": "MGA",
@@ -155,7 +144,7 @@
   },
   {
     "model": "books.book",
-    "pk": 15,
+    "pk": 14,
     "fields": {
       "title": "Finlandia: Santa Yousei Gakkou",
       "book_type": "MGA",
@@ -166,7 +155,7 @@
   },
   {
     "model": "books.book",
-    "pk": 16,
+    "pk": 15,
     "fields": {
       "title": "Youkai Niisan",
       "book_type": "MGA",
@@ -177,7 +166,7 @@
   },
   {
     "model": "books.book",
-    "pk": 17,
+    "pk": 16,
     "fields": {
       "title": "Mamacolle",
       "book_type": "MGA",
@@ -188,7 +177,7 @@
   },
   {
     "model": "books.book",
-    "pk": 18,
+    "pk": 17,
     "fields": {
       "title": "DoLL",
       "book_type": "MGA",
@@ -199,7 +188,7 @@
   },
   {
     "model": "books.book",
-    "pk": 19,
+    "pk": 18,
     "fields": {
       "title": "Sensor",
       "book_type": "MGA",
@@ -210,13 +199,24 @@
   },
   {
     "model": "books.book",
-    "pk": 20,
+    "pk": 19,
     "fields": {
       "title": "Kaikisen",
       "book_type": "MGA",
       "volumes": 1,
       "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/3/157831.jpg?s=a253c1934b98f561915de2393e6df57f",
       "score": 6.69
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 20,
+    "fields": {
+      "title": "Boku wa Oneko-sama no Geboku desu.",
+      "book_type": "MGA",
+      "volumes": 4,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/241159.jpg?s=d6209a6d7ee44136be02dae27165d0a4",
+      "score": 6.96
     }
   },
   {

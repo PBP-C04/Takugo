@@ -35,6 +35,10 @@ def login_user(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
 
         if user is not None:
             login(request, user)
+            redirect_url = request.GET.get("next", None)
+            if redirect_url:
+                return redirect(redirect_url)
+            
             return HttpResponseRedirect(reverse("main:show_main"))
         
         else:
