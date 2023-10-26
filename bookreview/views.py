@@ -47,8 +47,6 @@ def show_bookreview(request, book_id):
     bookreview_data = BookReview.objects.filter(book=book_id)
     user = request.user
 
-    print(book_to_review.pk)
-
     context = {
         'book_to_review': book_to_review,
         'list_of_review': bookreview_data,

@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Welcome, {{ name }}</h1>
-<h2>Ready to Review this book?</h2>
+<h2>Ready to review {{ book_to_review.title }}?</h2>
 
 <table id="review_table"></table>
 
@@ -22,13 +22,12 @@
                 <form id="form" onsubmit="return false;">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="notes" class="col-form-label">Comment:</label>
+                        <label for="comment" class="col-form-label">Comment:</label>
                         <textarea class="form-control" id="comment" name="comment" autocomplete="off"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="size" class="col-form-label">Rating:</label>
-                        <input type="range" class="form-control" id="size" name="size" min="1" max="5">
-                        <output for="size" id="ratingValue">1</output>
+                        <label for="rating" class="col-form-label">Rating:</label>
+                        <input type="number" class="form-control" id="rating" name="rating" min="1" max="5">
                     </div>                    
                 </form>
             </div>
@@ -45,8 +44,9 @@
 
 
 <script>
-    async function getProducts() {
-        return fetch("{% url 'bookreview:review_json' book_id=0 %}").replace("0", book_to_review.pk).then((res) => res.json())
+    var book_id="{{ book_to_review.pk }}"
+    async function getReview() {
+        return fetch("{% url 'bookreview:review_json' book_id=0 %}".replace("0", book_id)).then((res) => res.json())
     }
 
     async function refreshReview() {
@@ -72,12 +72,11 @@
                 </td>
             </tr>`;
         });
-
         reviewTable.innerHTML = htmlString;
     }
 
     function addReview() {
-        fetch("{% url 'bookreview:add_review' book_id=0 %}".replace("0", book_to_review.pk), {
+        fetch("{% url 'bookreview:add_review' book_id=0 %}".replace("0", book_id), {
             method: "POST",
             body: new FormData(document.querySelector('#form'))
         }).then(() => {
@@ -87,12 +86,6 @@
         return false;
     }
 
-    const rangeInput = document.getElementById("size");
-    const ratingValue = document.getElementById("ratingValue");
-
-    rangeInput.addEventListener("input", function() {
-        ratingValue.textContent = this.value;
-    });
 
     refreshReview();
     document.getElementById("button_add").onclick = addReview;
