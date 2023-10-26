@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Book Review</title>
+{% endblock meta %}
+
+{% block content %}
+<h1>Welcome, {{ name }}</h1>
+<h2>Ready to Review this book?</h2>
+
+<table id="review_table"></table>
+
+<div class="row" id="item-cards"></div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="book-title">{{ book_to_review.title }}</h1> 
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="notes" class="col-form-label">Comment:</label>
+                        <textarea class="form-control" id="comment" name="comment" autocomplete="off"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="size" class="col-form-label">Rating:</label>
+                        <input type="range" class="form-control" id="size" name="size" min="1" max="5">
+                        <output for="size" id="ratingValue">1</output>
+                    </div>                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Review</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Review</button>
+</div>
+
+
+<script>
+    async function getProducts() {
+        return fetch("{% url 'bookreview:review_json' book_id=0 %}").replace("0", book_to_review.pk).then((res) => res.json())
+    }
+
+    async function refreshReview() {
+        const reviewTable = document.getElementById("review_table");
+        reviewTable.innerHTML = "";
+
+        const reviews = await getReview();
+
+        let htmlString = `<tr>
+            <th>Comment</th>
+            <th>Rating</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+        </tr>`;
+
+        reviews.forEach((review) => {
+            htmlString += `<tr>
+                <td>${review.fields.comment}</td>
+                <td>${review.fields.rating}</td>
+                <td>${review.fields.date_added}</td>
+                <td>
+                    <button class="btn btn-danger" onclick="deleteReview(${review.pk})">Delete Review</button>
+                </td>
+            </tr>`;
+        });
+
+        reviewTable.innerHTML = htmlString;
+    }
+
+    function addReview() {
+        fetch("{% url 'bookreview:add_review' book_id=0 %}".replace("0", book_to_review.pk), {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(() => {
+            refreshReview();
+            document.getElementById("form").reset();
+        });
+        return false;
+    }
+
+    const rangeInput = document.getElementById("size");
+    const ratingValue = document.getElementById("ratingValue");
+
+    rangeInput.addEventListener("input", function() {
+        ratingValue.textContent = this.value;
+    });
+
+    refreshReview();
+    document.getElementById("button_add").onclick = addReview;
+</script>
+
+{% endblock content %}
