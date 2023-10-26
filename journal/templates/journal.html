@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Book Journal</title>
+{% endblock meta %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{% url 'journal:show_main' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Book Journal
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">My Journal</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h2>Welcome, {{ name }}</h2>
+
+<div class="card">
+    <div class="card-body">
+        <label for="filter">Filter Book Type:</label>
+        <select id="filter" name="filter" onchange="refreshList(this.value);">
+            <option value="none" selected>None</option>
+            <option value="MGA">Manga</option>
+            <option value="LNV">Light-Novel</option>
+            <option value="DJS">Doujinshi</option>
+            <option value="MHW">Manhwa</option>
+            <option value="MHU">Manhua</option>
+            <option value="NVL">Novel</option>
+            <option value="OTH">Other</option>
+        </select>
+        <table id="list">
+        </table>
+        
+        <div class="row" id="item-cards"></div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="book-title">Book Title</h1> 
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="return false;">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="notes" class="col-form-label">Notes:</label>
+                                <textarea class="form-control" id="notes" name="notes" autocomplete="off"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="quotes" class="col-form-label">Favorite Quotes:</label>
+                                <textarea class="form-control" id="quotes" name="quotes" autocomplete="off"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="rating" class="col-form-label">Rating:</label>
+                                <input type="range" class="form-control" id="rating" name="rating" min="1" max="5">
+                                <output for="rating" id="ratingValue">1</output>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add to Journal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function getBookList(filter) {
+        return fetch(`{% url 'books:get_book_list' %}?filter=${filter}`)
+            .then((res) => res.json());
+    }
+
+    async function refreshList(filter) {
+        const books = await getBookList(filter);
+        document.getElementById("list").innerHTML = "";
+        let htmlString = `
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Volumes</th>
+                    <th>Score</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        `;
+        books.forEach((book) => {
+            // const buyUrl = "{% url 'books:buy_book' id=0 %}".replace("0", book.pk);
+            htmlString += `
+                <tr>
+                    <td><img src=${book.fields.image_url}></td>
+                    <td>${book.fields.title}</td>
+                    <td>${book.fields.volumes}</td>
+                    <td>${book.fields.score}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary add-to-journal-button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-book-id="${book.pk}" onclick="setBookTitle(${book.pk})">Add Book to Journal</button>
+                    </td>
+                </tr>
+            `;
+        });
+        htmlString += "</tbody>"
+        document.getElementById("list").innerHTML = htmlString;
+    }
+    refreshList("none");
+
+    function setBookTitle(bookID) {
+        document.getElementById('book-title').textContent = "LOL";
+        fetch(`/get_book_title/${bookID}/`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('book-title').textContent = data.title;
+        })
+    }
+    
+
+    // belum bikinn
+    function addJournal() {
+        fetch("{% url 'journal:add_journal' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addJournal
+    
+
+    // Tambahkan event listener pada tombol "Add to Journal" di modal
+    const addButton = document.getElementById('button_add');
+    addButton.addEventListener('click', () => {
+        const bookId = document.getElementById('book-id').value;
+        const notes = document.getElementById('notes').value;
+        const favoriteQuotes = document.getElementById('price').value;
+        const rating = document.getElementById('size').value;
+
+        // Kirim data ke server melalui AJAX (ganti dengan URL yang sesuai)
+        fetch(`/add_to_journal/${bookId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie("csrftoken"), // Fungsi untuk mengambil token CSRF
+            },
+            body: JSON.stringify({
+                notes,
+                favoriteQuotes,
+                rating,
+            }),
+        })
+        .then((response) => {
+            if (response.ok) {
+                modal.hide();
+                // Refresh atau perbarui daftar buku jika diperlukan
+                refreshList(document.getElementById('filter').value);
+            }
+        });
+    });
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === name + '=') {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const rangeInput = document.getElementById("rating");
+    const ratingValue = document.getElementById("ratingValue");
+
+    rangeInput.addEventListener("input", function() {
+        ratingValue.textContent = this.value;
+    });
+</script>
+{% endblock content %}
