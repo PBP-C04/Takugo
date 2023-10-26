@@ -117,12 +117,11 @@
     refreshList("none");
 
     function setBookTitle(bookID) {
-        document.getElementById('book-title').textContent = "LOL";
-        fetch(`/get_book_title/${bookID}/`)
+        fetch("{% url 'journal:get_book_title/' 0 %}".replace("0", bookID))
         .then(response => response.json())
         .then(data => {
             document.getElementById('book-title').textContent = data.title;
-        })
+        });
     }
     
 

@@ -8,7 +8,7 @@ urlpatterns = [
     path('', show_main, name='show_main'),
     path("api/book-list", get_book_list, name="get_book_list"),
     path("add_journal/", add_journal, name="add_journal"),
-    path("get_book_title/", get_book_title, name="get_book_title")
+    path("get_book_title/<int:id>/", get_book_title, name="get_book_title")
     # path('add-journal/', add_journal, name='add_journal'),
     # path('get-journal/', get_journal, name='get_journal')
 ]
