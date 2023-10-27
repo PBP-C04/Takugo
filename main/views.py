@@ -1,5 +1,6 @@
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.urls import reverse
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserChangeForm
@@ -9,9 +10,7 @@ from main.models import TakugoUser
 
 
 def show_main(request: HttpRequest) -> HttpResponse:
-    user = request.user
-    context = {"user": user if user else ""}
-    return render(request, "main.html", context)
+    return render(request, "main.html", {})
 
 
 def register_user(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
@@ -24,7 +23,7 @@ def register_user(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
             return redirect("main:login")
     
     context = {"form": form}
-    return render(request, "register.html", context=context)
+    return render(request, "register.html", context)
 
 
 def login_user(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
@@ -42,7 +41,7 @@ def login_user(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
             return HttpResponseRedirect(reverse("main:show_main"))
         
         else:
-            pass
+            messages.info(request, "Invalid username or password.")
     
     context = {}
     return render(request, "login.html", context)
