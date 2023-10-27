@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'books',
+    'bookreview'
 ]
 
 AUTH_USER_MODEL = 'main.TakugoUser'
