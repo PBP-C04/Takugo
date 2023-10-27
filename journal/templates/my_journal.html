@@ -61,6 +61,7 @@
         container.innerHTML = ""; 
 
         const journals = await getJournal();
+        console.log(journals.length)
         
         journals.forEach(journal => {
             const card = document.createElement("div");

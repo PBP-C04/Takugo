@@ -25,7 +25,7 @@ def show_journal(request, id):
         }
 
     else:    
-        journals = BookJournal.objects.get(pk=id)
+        journals = BookJournal.objects.filter(user=request.user, book=id)
         context = {
             "name" : request.user.username,
             "book" : book_request,
@@ -35,19 +35,24 @@ def show_journal(request, id):
     return render(request, "my_journal.html", context)
 
 def get_journal_json(request, id):
-    journal_item = BookJournal.objects.filter(pk=id)
+    journal_item = BookJournal.objects.filter(book=id, user=request.user)
+    return HttpResponse(serializers.serialize('json', journal_item))
+
+def all_journal_json(request):
+    journal_item = BookJournal.objects.all()
     return HttpResponse(serializers.serialize('json', journal_item))
 
 @csrf_exempt
 def add_journal(request, id):
     if request.method == 'POST':
+        user = request.user
         book = Book.objects.get(pk=id)
         notes = request.POST.get("notes")
         favorite_quotes = request.POST.get("favorite-quotes")
         rating = request.POST.get("rating")
-        user = request.user
+        
 
-        new_journal = BookJournal(book=book, notes=notes, favorite_quotes=favorite_quotes, rating=rating, user=user)
+        new_journal = BookJournal(user=user, book=book, notes=notes, favorite_quotes=favorite_quotes, rating=rating)
         new_journal.save()
 
         return HttpResponse(b"CREATED", status=201)
