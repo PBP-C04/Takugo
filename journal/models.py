@@ -5,7 +5,7 @@ from main.models import TakugoUser
 
 class BookJournal(models.Model):
     user = models.ForeignKey(TakugoUser, on_delete=models.CASCADE)
-    book = models.OneToOneField(Book, on_delete=models.CASCADE) # harusnya many to many????
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
     notes = models.TextField()
     favorite_quotes = models.TextField()

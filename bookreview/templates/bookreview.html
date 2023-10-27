@@ -1,28 +1,26 @@
 {% extends 'base.html' %}
 
 {% block meta %}
-<title>Book Journal</title>
+<title>Book List</title>
 {% endblock meta %}
 
 {% block content %}
-<h2>Welcome, {{ name }}!</h2>
+<h2>Welcome, {{ name }}</h2>
 
-<div class="card">
-    <div class="card-body">
-        <label for="filter">Filter Book Type:</label>
-        <select id="filter" name="filter" onchange="refreshList(this.value);">
-            <option value="none" selected>None</option>
-            <option value="MGA">Manga</option>
-            <option value="LNV">Light-Novel</option>
-            <option value="DJS">Doujinshi</option>
-            <option value="MHW">Manhwa</option>
-            <option value="MHU">Manhua</option>
-            <option value="NVL">Novel</option>
-            <option value="OTH">Other</option>
-        </select>
-        <table id="list">
-        </table>
-    </div>
+<div id="book_list">
+    <label for="filter">Filter Book Type:</label>
+    <select id="filter" name="filter" onchange="refreshList(this.value);">
+        <option value="none" selected>None</option>
+        <option value="MGA">Manga</option>
+        <option value="LNV">Light-Novel</option>
+        <option value="DJS">Doujinshi</option>
+        <option value="MHW">Manhwa</option>
+        <option value="MHU">Manhua</option>
+        <option value="NVL">Novel</option>
+        <option value="OTH">Other</option>
+    </select>
+    <table id="list">
+    </table>
 </div>
 
 <script>
@@ -47,21 +45,22 @@
             <tbody>
         `;
         books.forEach((book) => {
+            const showReviewUrl = "{% url 'bookreview:show_bookreview' book_id=0 %}".replace("0", book.pk);
             htmlString += `
-                <tr id="${book.pk}">
+                <tr>
                     <td><img src=${book.fields.image_url}></td>
                     <td>${book.fields.title}</td>
                     <td>${book.fields.volumes}</td>
                     <td>${book.fields.score}</td>
-                    <td>
-                        <a class="btn btn-primary" href="show_journal/${book.pk}/">Add Journal</a>
-                    </td>
+                    <td><a href="${showReviewUrl}"><button data-book-id="${book.pk}">Show Review</button></a></td>
                 </tr>
             `;
         });
         htmlString += "</tbody>"
         document.getElementById("list").innerHTML = htmlString;
     }
+
     refreshList("none");
 </script>
+
 {% endblock content %}
