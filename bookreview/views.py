@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from books.views import get_book_list
 from django.core import serializers
 from django.http import HttpRequest, HttpResponse, HttpResponseNotFound, HttpResponseForbidden
 from django.shortcuts import render
@@ -9,6 +8,7 @@ from bookreview.models import BookReview
 from books.models import Book
 from django.http import JsonResponse
 from main.models import TakugoUser
+from bookreview.forms import BookReviewForm
 
 # View yang menangani tampilan utama
 def show_main(request):
@@ -25,19 +25,20 @@ def show_main(request):
 @login_required
 def add_review(request, book_id):
     if request.method == 'POST':
-        comment = request.POST.get('comment')
-        rating = request.POST.get('rating')
-        
-        book = Book.objects.get(pk=book_id)
-        review = BookReview(
-            comment=comment,
-            rating=rating,
-            user=request.user,
-            book=book
-        )
-        review.save()
+        form = BookReviewForm(request.POST)  # Gunakan formulir Django
+        if form.is_valid():
+            comment = form.cleaned_data['comment']
+            rating = form.cleaned_data['rating']
 
-        return HttpResponse(b"CREATED", status=201)
+            book = Book.objects.get(pk=book_id)
+            review = BookReview(
+                comment=comment,
+                rating=rating,
+                user=request.user,
+                book=book
+            )
+            review.save()
+            return HttpResponse(b"CREATED", status=201)
     
     return HttpResponseNotFound()
 
@@ -46,6 +47,7 @@ def show_bookreview(request, book_id):
     book_to_review = Book.objects.get(pk=book_id)
     bookreview_data = BookReview.objects.filter(book=book_id)
     data_count = bookreview_data.count()
+    review_form = BookReviewForm()
     
     if request.user.is_authenticated:
         user_type_status = request.user.user_type
@@ -59,7 +61,8 @@ def show_bookreview(request, book_id):
         'list_of_review': bookreview_data,
         'name': name,
         'user_status': user_type_status,
-        'data_count': data_count
+        'data_count': data_count,
+        'review_form': review_form
     }
 
     return render(request, 'showreview.html', context)

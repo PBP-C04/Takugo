@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 <style>
     .alert {
@@ -34,6 +35,7 @@
 
 </div>
 
+<!-- Tambahkan formulir review di dalam modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -42,17 +44,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="form" onsubmit="return false;">
+                <form id="form" method="POST">
                     {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="comment" class="form-label">Comment:</label>
-                        <textarea class="form-control" id="comment" name="comment" autocomplete="off"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="rating" class="form-label">Rating:</label>
-                        <input type="range" class="form-control" id="rating" name="rating" min="1" max="5" value="1">
-                        <output for="rating" id="ratingValue">1</output>
-                    </div>
+                    {{ review_form.comment.label_tag }}
+                    {{ review_form.comment }}
+                    {{ review_form.rating.label_tag }}
+                    {{ review_form.rating }}
                 </form>
             </div>
             <div class="modal-footer">
@@ -62,6 +59,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="container mt-4">
     <h3>Reviews</h3>
