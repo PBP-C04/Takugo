@@ -1,14 +1,63 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block meta %}
 <title>Login</title>
 {% endblock meta %}
 
 {% block content %}
-<form method="POST" action="">
-    {% csrf_token %}
-    <input type="text" placeholder="Username" name="username" id="username">
-    <input type="password" placeholder="Password" name="password" id="password">
-    <input type="submit">
-</form>
+<main id="main">
+
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Login</h2>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="inner-page">
+        <div class="container">
+            <form method="POST" action="" class="form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4 offset-md-4 form-group">
+                        <input class="form-control" type="text" placeholder="Username" name="username" id="username" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 offset-md-4 form-group mt-3">
+                        <input class="form-control" type="password" placeholder="Password" name="password" id="password" required>
+                    </div>
+                </div>
+                <div class="my-3">
+                    {% if messages %}
+                        <ul class="mx-auto text-center list-group list-group-flush">
+                            {% for message in messages %}
+                                <li 
+                                    class="mx-auto w-40 list-group-item 
+                                        {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}list-group-item-danger{% endif %}
+                                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}list-group-item-success{% endif %}
+                                    "
+                                >
+                                    {{ message }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="text-center mt-3">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                Don't have an account yet? <a href="{% url 'main:register' %}">Register</a>
+            </div>
+        </div>
+    </section>
+
+</main>
 {% endblock content %}
