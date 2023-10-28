@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'main',
     'books',
     'journal',
-    'bookreview'
+    'bookreview',
+    'donate',
 ]
 
 AUTH_USER_MODEL = 'main.TakugoUser'
