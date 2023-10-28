@@ -5,25 +5,35 @@
 {% endblock meta %}
 
 {% block content %}
-<h2>Welcome, {{ name }}!</h2>
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Welcome, {{ name }}</h2>
+            </div>
+        </div>
+    </section>
 
-<div class="card">
-    <div class="card-body">
-        <label for="filter">Filter Book Type:</label>
-        <select id="filter" name="filter" onchange="refreshList(this.value);">
-            <option value="none" selected>None</option>
-            <option value="MGA">Manga</option>
-            <option value="LNV">Light-Novel</option>
-            <option value="DJS">Doujinshi</option>
-            <option value="MHW">Manhwa</option>
-            <option value="MHU">Manhua</option>
-            <option value="NVL">Novel</option>
-            <option value="OTH">Other</option>
-        </select>
-        <table id="list">
-        </table>
-    </div>
-</div>
+    <section class="inner-page">
+        <div class="card">
+            <div class="card-body">
+                <label class="fw-normal fs-6" for="filter">Filter Book Type:</label>
+                <select class="form-select mb-3" id="filter" name="filter" onchange="refreshList(this.value);" style="width: 125px; display: inline-block;">
+                    <option value="none" selected>None</option>
+                    <option value="MGA">Manga</option>
+                    <option value="LNV">Light-Novel</option>
+                    <option value="DJS">Doujinshi</option>
+                    <option value="MHW">Manhwa</option>
+                    <option value="MHU">Manhua</option>
+                    <option value="NVL">Novel</option>
+                    <option value="OTH">Other</option>
+                </select>
+                <table id="list">
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
 
 <script>
     async function getBookList(filter) {
@@ -33,35 +43,50 @@
 
     async function refreshList(filter) {
         const books = await getBookList(filter);
+        const BOOK_TYPES = {
+            "MGA": "Manga",
+            "LNV": "Light-Novel",
+            "DJS": "Doujinshi",
+            "MHW": "Manhwa",
+            "MHU": "Manhua",
+            "NVL": "Novel",
+            "OTH": "Other"
+        }
+
         document.getElementById("list").innerHTML = "";
-        let htmlString = `
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Title</th>
-                    <th>Volumes</th>
-                    <th>Score</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-        `;
+        let htmlString = "";
         books.forEach((book) => {
+            const addJournalButton = document.createElement("a");
+            addJournalButton.href = `show_journal/${book.pk}/`;
+            addJournalButton.classList.add("btn", "btn-outline-warning");
+            addJournalButton.textContent = "Add Journal";
+
             htmlString += `
-                <tr id="${book.pk}">
-                    <td><img src=${book.fields.image_url}></td>
-                    <td>${book.fields.title}</td>
-                    <td>${book.fields.volumes}</td>
-                    <td>${book.fields.score}</td>
-                    <td>
-                        <a class="btn btn-primary" href="show_journal/${book.pk}/">Add Journal</a>
-                    </td>
-                </tr>
+                <div class="card mb-3" style="width: 25rem; display: inline-block;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src=${book.fields.image_url} class="img-fluid rounded-start" alt="${book.fields.title} Cover Image" width="200" height="280">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${book.fields.title}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Score: ${book.fields.score}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Volumes: ${book.fields.volumes}</h6>
+                                <div class="add-journal-button">${addJournalButton.outerHTML}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             `;
         });
-        htmlString += "</tbody>"
         document.getElementById("list").innerHTML = htmlString;
     }
     refreshList("none");
 </script>
+
+<style>
+    .inner-page {
+        padding: 0px;
+    }
+</style>
 {% endblock content %}
