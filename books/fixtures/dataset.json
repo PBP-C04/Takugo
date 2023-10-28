@@ -971,17 +971,6 @@
     "model": "books.book",
     "pk": 89,
     "fields": {
-      "title": "Youth Gone Wild",
-      "book_type": "MHU",
-      "volumes": 14,
-      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/3223.jpg?s=566132e995fa2fc9a3c5edf3e063b233",
-      "score": 7.59
-    }
-  },
-  {
-    "model": "books.book",
-    "pk": 90,
-    "fields": {
       "title": "Ardour",
       "book_type": "MHU",
       "volumes": 12,
@@ -991,7 +980,7 @@
   },
   {
     "model": "books.book",
-    "pk": 91,
+    "pk": 90,
     "fields": {
       "title": "Kamisama no Ude no Naka de dj - Strauss wa Ichinensei",
       "book_type": "DJS",
@@ -1002,7 +991,7 @@
   },
   {
     "model": "books.book",
-    "pk": 92,
+    "pk": 91,
     "fields": {
       "title": "Siscon Ani to Brocon Imouto ga Fuufu ni Nattara Shiawase Sugite Bakuhatsu Shisou",
       "book_type": "DJS",
@@ -1013,7 +1002,7 @@
   },
   {
     "model": "books.book",
-    "pk": 93,
+    "pk": 92,
     "fields": {
       "title": "Inu Usa Neko",
       "book_type": "DJS",
@@ -1024,7 +1013,7 @@
   },
   {
     "model": "books.book",
-    "pk": 94,
+    "pk": 93,
     "fields": {
       "title": "Solo Leveling",
       "book_type": "NVL",
@@ -1035,7 +1024,7 @@
   },
   {
     "model": "books.book",
-    "pk": 95,
+    "pk": 94,
     "fields": {
       "title": "Ginga Eiyuu Densetsu",
       "book_type": "NVL",
@@ -1046,7 +1035,7 @@
   },
   {
     "model": "books.book",
-    "pk": 96,
+    "pk": 95,
     "fields": {
       "title": "Shadow of Visions",
       "book_type": "MHU",
@@ -1057,7 +1046,7 @@
   },
   {
     "model": "books.book",
-    "pk": 97,
+    "pk": 96,
     "fields": {
       "title": "China Girls",
       "book_type": "MHU",
@@ -1068,7 +1057,7 @@
   },
   {
     "model": "books.book",
-    "pk": 98,
+    "pk": 97,
     "fields": {
       "title": "Mikkakan no Koufuku",
       "book_type": "NVL",
@@ -1079,7 +1068,7 @@
   },
   {
     "model": "books.book",
-    "pk": 99,
+    "pk": 98,
     "fields": {
       "title": "F.O.X",
       "book_type": "MHU",
@@ -1090,7 +1079,7 @@
   },
   {
     "model": "books.book",
-    "pk": 100,
+    "pk": 99,
     "fields": {
       "title": "Zhong Xia Ye Zhi Meng",
       "book_type": "MHU",
@@ -1101,7 +1090,7 @@
   },
   {
     "model": "books.book",
-    "pk": 101,
+    "pk": 100,
     "fields": {
       "title": "No.6",
       "book_type": "NVL",
@@ -1112,7 +1101,7 @@
   },
   {
     "model": "books.book",
-    "pk": 102,
+    "pk": 101,
     "fields": {
       "title": "Mawaru Penguindrum",
       "book_type": "NVL",
@@ -1123,7 +1112,7 @@
   },
   {
     "model": "books.book",
-    "pk": 103,
+    "pk": 102,
     "fields": {
       "title": "Digimon Zero Two",
       "book_type": "MHU",
@@ -1134,7 +1123,7 @@
   },
   {
     "model": "books.book",
-    "pk": 104,
+    "pk": 103,
     "fields": {
       "title": "Fated to Love You",
       "book_type": "MHU",
@@ -1145,7 +1134,7 @@
   },
   {
     "model": "books.book",
-    "pk": 105,
+    "pk": 104,
     "fields": {
       "title": "Konyaku Haki kara Hajimaru Akuyaku Reijou no Kangoku Slow Life",
       "book_type": "NVL",
@@ -1156,7 +1145,7 @@
   },
   {
     "model": "books.book",
-    "pk": 106,
+    "pk": 105,
     "fields": {
       "title": "Melancholic Princess",
       "book_type": "MHU",
@@ -1167,7 +1156,7 @@
   },
   {
     "model": "books.book",
-    "pk": 107,
+    "pk": 106,
     "fields": {
       "title": "Kimi wa Tsukiyo ni Hikarikagayaku",
       "book_type": "NVL",
@@ -1178,7 +1167,7 @@
   },
   {
     "model": "books.book",
-    "pk": 108,
+    "pk": 107,
     "fields": {
       "title": "Fantastic Tales",
       "book_type": "MHU",
@@ -1189,13 +1178,24 @@
   },
   {
     "model": "books.book",
-    "pk": 109,
+    "pk": 108,
     "fields": {
       "title": "Lian Ai Make\u2665Up!",
       "book_type": "MHU",
       "volumes": 1,
       "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/1/90351.jpg?s=d3c1f75223a2ccf34a63a03cf270c3b3",
       "score": 6.57
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 109,
+    "fields": {
+      "title": "Love Gashapon",
+      "book_type": "MHU",
+      "volumes": 1,
+      "image_url": "https://cdn.myanimelist.net/r/100x140/images/manga/2/16144.jpg?s=404b3c576d5829dbdefa1fb9eadf0525",
+      "score": 7.17
     }
   },
   {
