@@ -125,8 +125,15 @@ hr {
 }
 
 #start-journal-button {
-    margin-left: 43%;
-    margin-bottom: 10px;
+    display: block;
+    margin: 0 auto; /* Ini akan membuat tombol tetap berada di tengah */
+    text-align: center; /* Ini akan membuat teks dalam tombol tetap berada di tengah */
+}
+
+#delete-journal-button {
+    margin: 0 auto; /* Ini akan membuat tombol tetap berada di tengah */
+    margin-top: 10px;
+    text-align: center; /* Ini akan membuat teks dalam tombol tetap berada di tengah */
 }
 
 .form-control {

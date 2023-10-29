@@ -12,6 +12,8 @@ from main.models import TakugoUser
 def show_main(request: HttpRequest) -> HttpResponse:
     return render(request, "main.html", {})
 
+def coming_sson(request: HttpRequest) -> HttpResponse:
+    return render(request, "coming-soon.html", {})
 
 def register_user(request: HttpRequest) -> HttpResponse | HttpResponseRedirect:
     form = RegisterForm()

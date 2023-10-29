@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Book Journal</title>
+{% endblock meta %}
+
+{% block content %}
+<main id="main">
+    <section class="inner-page">
+        <div class="cs-text">
+            <h1 style="font-size: 80px;">Coming Soon</h1>
+            <p style="font-size: large;">We're working hard to finish the development of this site.  <br>
+            Please stay tune!</p>
+        </div>
+    </section>
+</main>
+
+<link rel="stylesheet" href="{% static 'css/coming-soon.css' %}">
+{% endblock content %}
