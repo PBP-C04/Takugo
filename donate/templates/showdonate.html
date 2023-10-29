@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Book Donation</title>
+{% endblock meta %}
+
+{% block content %}
+<main id="main">
+
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Login</h2>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="inner-page">
+        <div class="container">
+
+            <h2>Welcome, {{ name }}</h2>
+
+                {% if user_type == 'U' %}
+                <div>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Donate Book</button>
+                </div>
+                {% endif %}
+
+                <div class="row" id="donated_card">
+                    <!-- Menampilkan buku yang telah didonasikan-->
+                </div>
+                
+                <!-- Modal -->
+                    <div class = "modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class = "modal-dialog">
+                            <div class = "modal-content">
+                                <div class = "modal-header">
+                                    <h1 class = "modal-title fs-5" id="exampleModalLabel">Donate Book</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                
+                                <div class = "modal-body">
+                                    <form id="form" onsubmit="return false;">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label for="name" class="col-form-label">Buku:</label>
+                                            <select class="form-control" id="book" name="book">
+                                                {% for book in user_books %}
+                                                    <option value="{{ book.id }}">{{ book.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="lembaga" class="col-form-label">Lembaga:</label>
+                                            <select class="form-control" id="lembaga" name="lembaga">
+                                                {% for lem in lembaga %}
+                                                    <option value="{{ lembaga.id }}">{{ lembaga.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="kondisi" class="col-form-label">Kondisi:</label>
+                                            <input class="form-control" id="description" name="description"></input>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                <div class = "modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Donate Book</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    </section>
+</main>
+    
+<script>
+    async function showDonateUser() {
+        return fetch("{% url 'donate:show_donate_user' %}").then((res) => res.json())
+    }
+
+    async function showDonateLembaga() {
+        return fetch("{% url 'donate:show_donate_lembaga' %}").then((res) => res.json())
+    }
+
+    async function refreshProducts() {
+        document.getElementById("donated_card").innerHTML = ""
+        const donated = await showDonateUser()
+
+        if (donated.length == 0) {
+            document.getElementById("donated_card").innerHTML = "<p>Belum ada buku yang didonasikan</p>"
+        } else {
+            donated.forEach((item) => {
+                const cardHtml = `
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${item.fields.book}</h5>
+                            <p class="card-text">Donated by: ${item.fields.donatur}</p>
+                            <p class="card-text">Institution: ${item.fields.lembaga}</p>
+                            <p class="card-text">Kondisi: ${item.fields.kondisi}</p>
+                            <p class="card-text">Date Donated: ${item.fields.tanggal_donasi}</p>
+                        </div>
+                    </div>
+                </div>`;
+
+                document.getElementById("donated_cards").innerHTML += cardHtml;
+            });
+
+        }       
+    }
+</script>    
+{% endblock content %}

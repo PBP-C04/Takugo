@@ -23,4 +23,5 @@ urlpatterns = [
     path('books/', include('books.urls')),
     path('journal/', include('journal.urls')),
     path('bookreview/', include('bookreview.urls')),
+    path('donate/', include('donate.urls')),
 ]
