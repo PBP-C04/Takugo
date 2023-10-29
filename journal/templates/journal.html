@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block meta %}
 <title>Book Journal</title>
 {% endblock meta %}
@@ -8,9 +8,7 @@
 <main id="main">
     <section class="breadcrumbs">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Welcome, {{ name }}</h2>
-            </div>
+            <h2 style="text-align: center;">Welcome, {{ name }}!</h2>
         </div>
     </section>
 
@@ -35,58 +33,6 @@
     </section>
 </main>
 
-<script>
-    async function getBookList(filter) {
-        return fetch(`{% url 'books:get_book_list' %}?filter=${filter}`)
-            .then((res) => res.json());
-    }
-
-    async function refreshList(filter) {
-        const books = await getBookList(filter);
-        const BOOK_TYPES = {
-            "MGA": "Manga",
-            "LNV": "Light-Novel",
-            "DJS": "Doujinshi",
-            "MHW": "Manhwa",
-            "MHU": "Manhua",
-            "NVL": "Novel",
-            "OTH": "Other"
-        }
-
-        document.getElementById("list").innerHTML = "";
-        let htmlString = "";
-        books.forEach((book) => {
-            const addJournalButton = document.createElement("a");
-            addJournalButton.href = `show_journal/${book.pk}/`;
-            addJournalButton.classList.add("btn", "btn-outline-warning");
-            addJournalButton.textContent = "Add Journal";
-
-            htmlString += `
-                <div class="card mb-3" style="width: 25rem; display: inline-block;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src=${book.fields.image_url} class="img-fluid rounded-start" alt="${book.fields.title} Cover Image" width="200" height="280">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">${book.fields.title}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Score: ${book.fields.score}</h6>
-                                <h6 class="card-subtitle mb-2 text-muted">Volumes: ${book.fields.volumes}</h6>
-                                <div class="add-journal-button">${addJournalButton.outerHTML}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-        document.getElementById("list").innerHTML = htmlString;
-    }
-    refreshList("none");
-</script>
-
-<style>
-    .inner-page {
-        padding: 0px;
-    }
-</style>
+<script src="{% static 'js/journal.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/journal.css' %}">
 {% endblock content %}

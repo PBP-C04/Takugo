@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block meta %}
 <title>My Journal</title>
 {% endblock meta %}
@@ -8,13 +8,17 @@
 <main id="main">
     <section class="breadcrumbs">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2 class="journal-title">
-                    <a href="{% url 'journal:show_main' %}" class="btn btn-link">
-                        <i class="fas fa-arrow-left fa-2x"></i> <!-- Assuming you are using Font Awesome for icons -->
-                    </a>
-                    {{ name }}'s Journal for: {{ book.title }}
-                </h2>
+            <div class="row align-items-center">
+                <div class="col text-left">
+                    <a href="{% url 'journal:show_main' %}">
+                        <i class="fas fa-arrow-left fa-2x text-warning icon-back"></i>
+                    </a>                  
+                </div>
+                <div class="col text-center">
+                    <h2 class="journal-title">
+                        {{ name }}'s Journal for: {{ book.title }}
+                    </h2>
+                </div>
             </div>
         </div>
     </section>
@@ -26,38 +30,32 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="book-title">{{ book.title }}</h1> 
+                                <h1 class="modal-title fs-5" id="book-title" style="font-weight: bold;">{{ book.title }}</h1> 
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form id="form" onsubmit="return false;">
                                     {% csrf_token %}
                                     <div class="mb-3">
-                                        <p>Date Started:</p>
-                                        <p>{{ book_journal_form.date_started }}</p>
-                                    </div>
-                                    <div class="mb-3">
-                                        <p>Date Finished: </p>
-                                        <p>{{ book_journal_form.date_finished }}</p>
-                                    </div>
-                                    <div class="mb-3">
-                                        <p>Notes: </p>
+                                        <p style="font-weight: bold;"><i class="fas fa-book"></i> Notes: </p>
                                         <p>{{ book_journal_form.notes }}</p>
                                     </div>
                                     <div class="mb-3">
-                                        <p>Favorite Quotes: </p>
+                                        <p style="font-weight: bold;"><i class="fas fa-quote-left"></i> Favorite Quotes: </p>
                                         <p>{{ book_journal_form.favorite_quotes }}</p>
                                     </div>
                                     <div class="mb-3">
-                                        <p>Rating: </p>
+                                        <p style="font-weight: bold;"><i class="fas fa-star"></i> Rating: </p>
                                         <p>{{ book_journal_form.rating }}</p>
+                                        <p>{{ book_journal.rating.label_tag }}</p>
+                                        <span id="rating-value" class="text-center">1</span>
                                     </div>
                                 </form>
                             </div>
                             
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Journal</button>
+                                <button type="button" class="btn btn-warning" id="button_add" data-bs-dismiss="modal">Add Journal</button>
                             </div>
                         </div>
                     </div>
@@ -91,14 +89,18 @@
                                 <p>You don't have any journal added. Please start your journal first.</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">OK</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="start-journal-button">✏️Start Journal</button>
-                    <button type="button" class="btn btn-danger" id="delete-journal-button" onclick="deleteJournal()">🗑️Delete Journal</button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" id="start-journal-button">
+                        <i class="fas fa-pencil-alt"></i> Start Journal
+                    </button>
+                    <button type="button" class="btn btn-danger" id="delete-journal-button" onclick="deleteJournal()">
+                        <i class="fas fa-trash-alt"></i> Delete Journal
+                    </button>                    
                 </div>
             </div>
         </div>
@@ -139,23 +141,27 @@
             card.innerHTML = `
                 <div class="journal-body">
                     <div class="row">
-                        <div class="col-6 date-started">🎎Date Started: ${journal.fields.date_started}</div>
-                        <div class="col-6 date-finished text-right">🎏Date Finished: ${journal.fields.date_finished}</div>
+                        <div class="col-6 date-added">🎎Date Added: ${journal.fields.date_added}</div>
                     </div>
                     <br>
                     <div class="rating" id="starRating">
                         Rating: <span id="starIcons">${getStarIcons(journal.fields.rating)}</span>
                     </div>
                     <br>
-                    <div class="notes">📝Notes 
-                        <br>
+                    <div class="notes">
+                        📝 Notes
                     </div>
-                    <div class="notes-body">${journal.fields.notes}</div>
+                    <div class="notes-body note-quote-body">
+                        ${journal.fields.notes}
+                    </div>
                     <br>
-                    <div class="favorite-quotes">🎌Favorite Quotes
-                        <br>
+                    <div class="favorite-quotes">
+                        🎌 Favorite Quotes
                     </div>
-                    <div class="favorite-quotes-body">${journal.fields.favorite_quotes}</div>
+                    <div class="favorite-quotes-body note-quote-body">
+                        ${journal.fields.favorite_quotes}
+                    </div>
+
                 </div>
             `;
             container.appendChild(card);
@@ -203,153 +209,22 @@
 
         return starIcons;
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var ratingInput = document.getElementById("id_rating");
+        var ratingValue = document.getElementById("rating-value");
+
+        // Initial update
+        ratingValue.innerHTML = ratingInput.value;
+
+        // Update on input change
+        ratingInput.addEventListener("input", function() {
+            ratingValue.innerHTML = ratingInput.value;
+        });
+    });
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-
-<style>
-    .container {
-        margin-left: 0px;
-    }
-
-    .journal-title{
-        text-align: center;
-    }
-    
-    .inner-page {
-        padding: 0px;
-    }
-
-    /* Style for the entire page */
-    body {
-    background-color: #f8f9fa;
-    }
-
-    .card {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-    font-size: 24px;
-    margin: 0;
-    color: #333;
-    }
-
-    hr {
-    margin: 15px 0;
-    border: 0;
-    border-top: 1px solid #ddd;
-    }
-
-    /* Style for the modal dialog */
-    .modal-content {
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    }
-
-    .modal-header h1 {
-    font-size: 24px;
-    margin: 0;
-    }
-
-    .modal-body p {
-    margin: 0;
-    margin-bottom: 10px;
-    }
-
-    .modal-footer {
-    padding: 10px 0;
-    }
-
-    /* Style for buttons */
-    .btn {
-    padding: 10px 20px;
-    margin-right: 10px;
-    }
-
-    .btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    }
-
-    .btn-primary:hover {
-    background-color: #0056b3;
-    }
-
-    .btn-danger {
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    }
-
-    .btn-danger:hover {
-    background-color: #c82333;
-    }
-
-    .col-md-4.card p {
-        margin: 0;
-        margin-bottom: 10px;
-        color: #333;
-    }
-
-    .date-started {
-        color: #007bff; /* Blue color for Date Started */
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .date-finished {
-        color: #28a745; /* Green color for Date Finished */
-        font-weight: bold;
-        margin-bottom: 10px;
-        text-align: right;
-    }
-
-    .notes {
-        font-size: x-large;
-        font-weight: bold;
-        color: #333;
-    }
-
-    .favorite-quotes {
-        font-size: x-large;
-        font-weight: bold;
-        color: #333;
-    }
-
-    .favorite-quotes-body {
-        margin-bottom: 50px;
-    }
-
-    .rating {
-        color: #ffc107; /* Yellow color for Rating */
-        font-weight: bold;
-        text-align: center;
-        font-size: larger;
-    }
-    
-    .no-entry {
-        text-align: center;
-        font-size: larger;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
-    
-    .journal-body {
-        margin: 0px 40px 0px 35px;
-    }
-
-    #start-journal-button {
-        margin-left: 43%;
-        margin-bottom: 10px;
-    }
-
-</style>
+<link rel="stylesheet" href="{% static 'css/my_journal.css' %}">
 {% endblock content %}
