@@ -838,7 +838,8 @@ section {
 --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 15px 0;
-  background: whitesmoke;
+  background: url("../img/header.jpg") center center no-repeat;
+  background-size: cover;
   min-height: 40px;
   margin-top: 74px;
 }
@@ -846,6 +847,7 @@ section {
 .breadcrumbs h2 {
   font-size: 28px;
   font-weight: 400;
+  color: #f3f4f8;
 }
 
 .breadcrumbs ol {
