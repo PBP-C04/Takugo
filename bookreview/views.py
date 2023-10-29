@@ -9,6 +9,7 @@ from books.models import Book
 from django.http import JsonResponse
 from main.models import TakugoUser
 from bookreview.forms import BookReviewForm
+from books.views import get_book_list
 
 # View yang menangani tampilan utama
 def show_main(request):
@@ -85,8 +86,15 @@ def delete_review(request, id):
             return JsonResponse({'message': 'You are not authorized to delete this review'}, status=403)
     except BookReview.DoesNotExist:
         return JsonResponse({'message': 'Review not found'}, status=404)
-    
-def get_review_count(request, book_id):
+
+def get_data_count(request, book_id):
     review_count = BookReview.objects.filter(book=book_id).count()
-    return JsonResponse({'count': review_count})
+    return HttpResponse(str(review_count))
+
+def update_data_count(request, book_id):
+    if request.method == 'GET':
+        review_count = BookReview.objects.filter(book=book_id).count()
+        return HttpResponse(str(review_count))
+    
+
 

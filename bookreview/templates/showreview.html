@@ -1,74 +1,96 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<style>
-    .alert {
-        margin-top: 10px;
-    }
-</style>
 
 {% block meta %}
 <title>Book Review</title>
 {% endblock meta %}
 
 {% block content %}
-<div class="container">
-    <h1>Welcome, {{ name }}</h1>
-    <h2>Here's some review for {{ book_to_review.title }}</h2>
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="{% url 'bookreview:show_main' %}" class="btn btn-link">
+                    <i class="fas fa-arrow-left fa-2x"></i>
+                </a>                
+                <h3>Welcome, {{ name }}</h3>
+            </div>
+        </div>
+    </section>
 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-text">{{ book_to_review.title }} had {{ data_count }} review</h5>
+    <section class="inner-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                    <div class="card mb-4 text-center" style="border: none;">
+                        <div class="card-body">
+                            <h5 class="card-text" id="data_count_text" style="font-size: 18px; text-align: center; margin: 0;">{{ book_to_review.title }} had <span id="data_count" style="font-weight: bold; font-size: 16px;"></span> reviews. Go add yours and join our community now!</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" id="item-cards"></div>
+            
+            <div class="text-center mt-3">
+                {% if user_status == 'U' %}
+                <div style="text-align: center; display: flex; justify-content: center; align-items: center;">
+                    <table>
+                        <tr>
+                            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addReviewButton" style="margin-right: 5px;">Add Review</button></td>
+                        </tr>
+                    </table>
+                </div>                         
+                {% else %}
+                <div class="text-center mt-3">
+                    <p style="font-size: 14px;">Don't have an account yet? <a href="{% url 'main:register' %}" style="text-decoration: underline;">Register</a> yourself to add your review or <a href="{% url 'main:login' %}" style="text-decoration: underline;">Login</a> and explore more about us!</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    
+        <!-- Tambahkan formulir review di dalam modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ book_to_review.title }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" method="POST">
+                            <div class="info">
+                                <div class="form-group">
+                                    <label for="comment" style="font-weight: bold;">Comment :</label>
+                                    <p id="comment" style="font-size: 14px;">{{ review_form.comment }}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rating" style="font-weight: bold;">Rating (1-5):</label>
+                                    <p id="rating" style="font-size: 14px;">{{ review_form.rating }}</p>
+                                </div>
+                            </div>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal" onclick="addReview()">Add Review</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row" id="item-cards"></div>
-
-    {% if user_status == 'U' %}
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addReviewButton">Add Review</button>
-    {% endif %}
-</div>
-
-</div>
-
-<!-- Tambahkan formulir review di dalam modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ book_to_review.title }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    
+        <div class="container mt-4">
+            <div class="reviews_notes">
+                <h5>📝 Here's some reviews for {{ book_to_review.title }}</h5>
             </div>
-            <div class="modal-body">
-                <form id="form" method="POST">
-                    {% csrf_token %}
-                    {{ review_form.comment.label_tag }}
-                    {{ review_form.comment }}
-                    {{ review_form.rating.label_tag }}
-                    {{ review_form.rating }}
-                </form>
+            <div class="card-body">
+                <ul class="list-group" id="review_list"></ul>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Review</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container mt-4">
-    <h3>Reviews</h3>
-    <div class="card">
-        <div class="card-body">
-            <ul class="list-group" id="review_list"></ul>
-        </div>
-    </div>
-</div>
+        </div>        
+    </section>
+    
 
 <!-- Modal for Delete Review Confirmation -->
 <div class="modal fade" id="deleteReviewConfirmationModal" tabindex="-1" aria-labelledby="deleteReviewConfirmationModalLabel" aria-hidden="true">
@@ -124,10 +146,21 @@
         </div>
     </div>
 </div>
+</main>
+
+<!-- {% block script %}
+<script type="text/javascript">
+    var book_id = "{{ book_to_review.pk }}";
+    var userType = "{{ user_status }}";
+    var book_title = "{{ book_to_review.title }}";
+</script>
+<script src="{% static 'js/showreview.js' %}"></script>
+{% endblock script %} -->
 
 <script>
     var book_id="{{ book_to_review.pk }}";
     var userType = "{{ user_status }}";
+    var book_title = "{{ book_to_review.title }}"
 
     async function getReview() {
         return fetch("{% url 'bookreview:review_json' book_id=0 %}".replace("0", book_id)).then((res) => res.json());
@@ -143,26 +176,37 @@
             const listItem = document.createElement("li");
             listItem.classList.add("list-group-item");
             listItem.innerHTML = `
-                <h5>${review.fields.comment}</h5>
-                <p>Rating: ${review.fields.rating}</p>
-                <p>Posted at ${review.fields.date_added}</p>
-                <button class="btn btn-danger" onclick="deleteReview(${review.pk})">Delete Review</button>
+                <div class="review" style="border-radius: 10px; padding: 10px; margin: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); transition: 0.3s; background-color: #f8f9fa;">
+                    <div class="rating" id="starRating" style="text-align: left; margin: 5px; font-size: 14px; font-weight: bold;">
+                        Rating: <span id="starIcons">${getStarIcons(review.fields.rating)}</span>
+                    </div>
+                    <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+                        <div class="comment" style="text-align: center; font-size: 16px; margin: 10px;">
+                            <p>${review.fields.comment}</p>
+                        </div>
+                        <div class="info" style="display: flex; justify-content: space-between;">
+                            <div class="posted-at" style="text-align: left; margin-right: 5px; font-size: 12px;">
+                                <p>🗓️ Posted at: ${review.fields.date_added}</p>
+                            </div>
+                            <div class="delete" style="text-align: right; margin-left: 5px; font-size: 12px;">
+                                <a href="javascript:void(0)" onclick="deleteReview(${review.pk})">🗑️ Delete Review</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             `;
             reviewList.appendChild(listItem);
         });
-
-        const reviewCount = reviews.length;
-    
-        const reviewCountElement = document.getElementById("review_count");
-        reviewCountElement.textContent = `${book_to_review.title} had ${reviewCount} reviews`; // Menampilkan jumlah ulasan
     }
 
     function addReview() {
+        console.log("test")
         fetch("{% url 'bookreview:add_review' book_id=0 %}".replace("0", book_id), {
             method: "POST",
             body: new FormData(document.querySelector('#form'))
         }).then(() => {
             refreshReview();
+            updateDataCount();
             document.getElementById("form").reset();
         });
         return false;
@@ -181,6 +225,7 @@
                 })
                 .then(response => {
                     if (response.status === 200) {
+                        updateDataCount();
                         refreshReview();
                         document.getElementById("form").reset();
                     } else if (response.status === 403) {
@@ -202,26 +247,52 @@
         }
     }
 
+    function getStarIcons(rating) {
+        const starIcon = '★'; // Unicode star character
+
+        let starIcons = '';
+        for (let i = 0; i < rating; i++) {
+            starIcons += starIcon;
+        }
+
+        return starIcons;
+    }
+
     var ratingInput = document.getElementById('rating');
     var ratingOutput = document.getElementById('ratingValue');
-
-    // Memperbarui output saat input diubah
-    ratingInput.addEventListener('input', function() {
-        ratingOutput.textContent = ratingInput.value;
-    });
 
     var userType = "{{ user_status }}";
     if (userType === "U") {
         document.getElementById("addReviewButton").style.display = "block";
     }
 
+        // Function to update the data count asynchronously
+        async function updateDataCount() {
+        const response = await fetch("{% url 'bookreview:data_count' book_id=0 %}".replace("0", book_id));
+        if (response.ok) {
+            const dataCount = await response.text();
+            document.getElementById("data_count").textContent = dataCount;
+        }
+    }
+
+    // Call the updateDataCount function when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+        updateDataCount();
+    });
+
+    // Panggil refreshReview saat halaman dimuat
+    refreshReview();
+
     document.addEventListener("DOMContentLoaded", function () {
         var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
     });
-
-    refreshReview();
-    document.getElementById("button_add").onclick = addReview;
 </script>
+
+<link rel="stylesheet" href="{% static 'css/showreview.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+<meta charset="UTF-8">
 
 
 {% endblock content %}
