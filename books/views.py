@@ -1,3 +1,5 @@
+import json
+
 from django.core import serializers
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404
@@ -41,11 +43,23 @@ def get_book_bought(request: HttpRequest) -> HttpResponse:
         return HttpResponse(b"Unauthorized", status=401)
     
     filter = request.GET.get("filter", "none")
-    bought_books = BoughtBook.objects.filter(user=request.user).values("book")
-    books = Book.objects.filter(pk__in=bought_books)
-    if filter != "none":
-        books = books.filter(book_type=filter)
-    return HttpResponse(serializers.serialize("json", books), content_type="application/json")
+    bought_books = BoughtBook.objects.filter(user=request.user)
+    resp_json = []
+    for bought_book in bought_books:
+        if filter != "none" and book.book_type != filter:
+            continue
+    
+        fields = {}
+        fields["amount"] = bought_book.amount
+        book = Book.objects.get(pk=bought_book.book.id)
+        fields["title"] = book.title
+        fields["score"] = book.score
+        fields["volumes"] = book.volumes
+        fields["image_url"] = book.image_url
+        resp_json.append({"modal": "books.BoughtBook", "pk": book.id, "fields": fields})
+
+    resp_json = json.dumps(resp_json)
+    return HttpResponse(resp_json, content_type="application/json")
 
 
 @require_POST

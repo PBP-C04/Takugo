@@ -9,7 +9,7 @@
 <main id="main">
     <section class="breadcrumbs">
         <div class="container">
-            <h2 style="text-align: center;">Welcome to Book Section</h2>
+            <h2 style="text-align: center;">Welcome to Book Section, {{ name }}!</h2>
         </div>
     </section>
 
@@ -62,6 +62,24 @@
                     </div>
                 </div>
             </div>
+            <div id="alertModal" class="modal fade" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 id="alertModalLabel" class="modal-title fs-5">Already Bought Book</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+            
+                        <div class="modal-body">
+                            <p>You have already bought this book.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <button id="toggleAlertModal" type="button" data-bs-toggle="modal" data-bs-target="#alertModal" hidden></button>
+                </div>
+            </div>
             <div class="card-body">
                 <label class="fw-normal fs-6" for="filter">Filter Book Type:</label>
                 <select class="form-select mb-3" id="filter" name="filter" onchange="refreshBookList(this.value, undefined);" style="width: 175px; display: inline-block;">
@@ -77,7 +95,7 @@
                 <label class="fw-normal fs-6 ms-5" for="book-bought">View:</label>
                 <select class="form-select mb-3" id="book-bought" name="book-bought" onchange="refreshBookList(undefined, this.value);" style="width: 175px; display: inline-block;">
                     <option value="all" selected>All Books</option>
-                    <option value="bought">Bought Books</option>
+                    <option value="bought" {% if not user.is_authenticated %}disabled{% endif %}>Bought Books</option>
                 </select>
                 <table id="list"></table>
             </div>

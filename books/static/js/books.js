@@ -9,18 +9,8 @@ async function getBoughtBook(filter) {
 }
 
 async function refreshList(books, all) {
-    // const books = await getBookList(filter);
-    const BOOK_TYPES = {
-        "MGA": "Manga",
-        "LNV": "Light-Novel",
-        "DJS": "Doujinshi",
-        "MHW": "Manhwa",
-        "MHU": "Manhua",
-        "NVL": "Novel",
-        "OTH": "Other"
-    }
-
     document.getElementById("list").innerHTML = "";
+    all = all === "all";
     let htmlString = "";
     books.forEach((book) => {
         let button = document.createElement("button");
@@ -42,7 +32,8 @@ async function refreshList(books, all) {
                             <h5 class="card-title">${book.fields.title}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Score: ${book.fields.score}</h6>
                             <h6 class="card-subtitle mb-2 text-muted">Volumes: ${book.fields.volumes}</h6>
-                            ${all === "all" ? button.outerHTML : ""}
+                            ${all ? "" : `<h6 class="card-subtitle mb-2 text-muted">Amount: ${book.fields.amount}</h6>`}
+                            ${all ? button.outerHTML : ""}
                         </div>
                     </div>
                 </div>
@@ -77,6 +68,10 @@ function buyBook(book) {
     fetch(`buy-book/${book.pk}`, {
         method: "POST",
         body: new FormData(document.querySelector("#form"))
+    }).then((res) => {
+        if (res.status === 403) {
+            document.getElementById("toggleAlertModal").click();
+        }
     });
 }
 
