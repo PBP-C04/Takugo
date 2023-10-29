@@ -28,7 +28,8 @@
                 </div>
                 {% endif %}
 
-                <div class="row" id="donated_card">
+                
+                <div class="row" id="donated_cards">
                     <!-- Menampilkan buku yang telah didonasikan-->
                 </div>
                 
@@ -47,8 +48,8 @@
                                         <div class="mb-3">
                                             <label for="name" class="col-form-label">Buku:</label>
                                             <select class="form-control" id="book" name="book">
-                                                {% for book in user_books %}
-                                                    <option value="{{ book.id }}">{{ book.name }}</option>
+                                                {% for book in books %}
+                                                    <option value="{{ book.id }}">{{ book.title }}</option>
                                                 {% endfor %}
                                             </select>
                                         </div>
@@ -56,13 +57,12 @@
                                             <label for="lembaga" class="col-form-label">Lembaga:</label>
                                             <select class="form-control" id="lembaga" name="lembaga">
                                                 {% for lem in lembaga %}
-                                                    <option value="{{ lembaga.id }}">{{ lembaga.name }}</option>
+                                                    <option value="{{ lem.id }}">{{ lem.username }}</option>
                                                 {% endfor %}
                                             </select>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="kondisi" class="col-form-label">Kondisi:</label>
-                                            <input class="form-control" id="description" name="description"></input>
+                                            <p id="kondisi">{{ donate_form }} </p>
                                         </div>
                                     </form>
                                 </div>
@@ -79,6 +79,8 @@
 </main>
     
 <script>
+    var user_type = "{{ user_type }}";
+
     async function showDonateUser() {
         return fetch("{% url 'donate:show_donate_user' %}").then((res) => res.json())
     }
@@ -88,30 +90,59 @@
     }
 
     async function refreshProducts() {
-        document.getElementById("donated_card").innerHTML = ""
-        const donated = await showDonateUser()
+    document.getElementById("donated_cards").innerHTML = ""
+    const donated = user_type === 'U' ? await showDonateUser() : await showDonateLembaga()
 
-        if (donated.length == 0) {
-            document.getElementById("donated_card").innerHTML = "<p>Belum ada buku yang didonasikan</p>"
-        } else {
-            donated.forEach((item) => {
-                const cardHtml = `
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">${item.fields.book}</h5>
-                            <p class="card-text">Donated by: ${item.fields.donatur}</p>
-                            <p class="card-text">Institution: ${item.fields.lembaga}</p>
-                            <p class="card-text">Kondisi: ${item.fields.kondisi}</p>
-                            <p class="card-text">Date Donated: ${item.fields.tanggal_donasi}</p>
-                        </div>
+    if (donated.length === 0) {
+        document.getElementById("donated_cards").innerHTML = "<p>Belum ada buku yang didonasikan</p>";
+    } else if (user_type === 'U') {
+        donated.forEach((item) => {
+            const cardHtml = `
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">Institution: ${item.lembaga}</p>
+                        <p class="card-text">Kondisi: ${item.kondisi}</p>
+                        <p class="card-text">Date Donated: ${item.donated_date}</p>
                     </div>
-                </div>`;
+                </div>
+            </div>`;
 
-                document.getElementById("donated_cards").innerHTML += cardHtml;
+            document.getElementById("donated_cards").innerHTML += cardHtml;
             });
+        } else {
+        donated.forEach((item) => {
+            const cardHtml = `
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">Donated By: ${item.donatur}</p>
+                        <p class="card-text">Kondisi: ${item.kondisi}</p>
+                        <p class="card-text">Date Donated: ${item.donated_date}</p>
+                    </div>
+                </div>
+            </div>`;
 
-        }       
+            document.getElementById("donated_cards").innerHTML += cardHtml;
+            });
+        }
     }
+
+    refreshProducts();
+
+    function addDonate() {
+        fetch("{% url 'donate:add_donate' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector("#form"))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false;
+    }
+
+    document.getElementById("button_add").onclick = addDonate;
+
 </script>    
 {% endblock content %}

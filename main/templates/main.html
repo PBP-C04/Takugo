@@ -6,13 +6,7 @@
 {% endblock meta %}
 
 {% block content %}
-<!-- <a href="{% url 'main:register' %}"><button>Register</button></a>
-<a href="{% url 'main:login' %}"><button>Login</button></a>
-<a href="{% url 'main:logout' %}"><button>Logout</button></a>
-<a href="{% url 'main:settings' %}"><button>Settings</button></a>
-<a href="{% url 'books:show_main' %}"><button>Books</button></a>
-<a href="{% url 'bookreview:show_main' %}"><button>Book Review</button></a>
-<a href="{% url 'journal:show_main' %}"><button>Journal</button></a> -->
+
 <!-- ======= Hero Section ======= -->
 <section id="home" class="d-flex align-items-center justify-content-center">
     <div class="container" data-aos="fade-up">
@@ -46,7 +40,7 @@
         <div class="col-xl-2 col-md-4">
           <div class="icon-box">
             <i class="ri-hand-heart-line"></i>
-            <h3><a href="">Donate Book</a></h3>
+            <h3><a href="{% url 'donate:show_donatepage' %}">Donate Book</a></h3>
           </div>
         </div>
         <div class="col-xl-2 col-md-4">
@@ -153,7 +147,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-donate-heart"></i></div>
-              <h4><a href="#">Donate Book</a></h4>
+              <h4><a href="{% url 'donate:show_donatepage' %}">Donate Book</a></h4>
               <p>Give back to the book community by donating your books, promoting literacy, contribute to improving literacy and strengthening inter-community relationships.</p>
             </div>
           </div>
