@@ -9,30 +9,32 @@
 <main id="main">
     <section class="breadcrumbs">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Welcome, {{ name }}</h2>
-            </div>
+            <h2 style="text-align: center;">Welcome to Book Review Section</h2>
         </div>
     </section>
 
     <section class="inner-page">
-        <div id="book_list" class="container mt-4">
-            <label class="fw-normal fs-6" for="filter">Filter Book Type:</label>
-            <select id="filter" name="filter" class="form-select mb-4" onchange="refreshList(this.value);" style="width: 125px; display: inline-block;">
-                <option value="none" selected>None</option>
-                <option value="MGA">Manga</option>
-                <option value="LNV">Light-Novel</option>
-                <option value="DJS">Doujinshi</option>
-                <option value="MHW">Manhwa</option>
-                <option value="MHU">Manhua</option>
-                <option value="NVL">Novel</option>
-                <option value="OTH">Other</option>
-            </select>
-            <div id="list"></div>
+        <div class="card">
+            <div class="card-body">
+                <!-- <div id="book_list" class="container mt-4"> -->
+                <label class="fw-normal fs-6" for="filter">Filter Book Type:</label>
+                <select id="filter" name="filter" class="form-select mb-3" onchange="refreshList(this.value);" style="width: 125px; display: inline-block;">
+                    <option value="none" selected>None</option>
+                    <option value="MGA">Manga</option>
+                    <option value="LNV">Light-Novel</option>
+                    <option value="DJS">Doujinshi</option>
+                    <option value="MHW">Manhwa</option>
+                    <option value="MHU">Manhua</option>
+                    <option value="NVL">Novel</option>
+                    <option value="OTH">Other</option>
+                </select>
+                <table id="list">
+                </table>
+            </div>
         </div>
     </section>
 </main>
 
 <script src="{% static 'js/bookreview.js' %}"></script>
-
+<link rel="stylesheet" href="{% static 'css/bookreview.css' %}">
 {% endblock content %}

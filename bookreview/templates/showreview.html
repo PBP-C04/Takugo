@@ -12,9 +12,9 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <a href="{% url 'bookreview:show_main' %}" class="btn btn-link">
-                    <i class="fas fa-arrow-left fa-2x"></i>
+                    <i class="fas fa-arrow-left fa-2x text-warning icon-back"></i>
                 </a>                
-                <h3>Welcome, {{ name }}</h3>
+                <h3>Ready to Review this book, {{ name }}?</h3>
             </div>
         </div>
     </section>
@@ -148,14 +148,6 @@
 </div>
 </main>
 
-<!-- {% block script %}
-<script type="text/javascript">
-    var book_id = "{{ book_to_review.pk }}";
-    var userType = "{{ user_status }}";
-    var book_title = "{{ book_to_review.title }}";
-</script>
-<script src="{% static 'js/showreview.js' %}"></script>
-{% endblock script %} -->
 
 <script>
     var book_id="{{ book_to_review.pk }}";
