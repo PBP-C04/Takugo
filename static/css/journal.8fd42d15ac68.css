@@ -1,0 +1,20 @@
+.inner-page {
+    padding: 0px;
+}
+
+.card.mb-3 {
+    margin-right: 10px; /* Mengatur margin bawah 10px antara elemen buku */
+}
+
+#list {
+    animation: slideIn 0.7s ease-in-out; /* Menambahkan animasi slideIn dengan durasi 1 detik */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20%); /* Mulai dari posisi tersembunyi di luar layar sebelah kiri */
+    }
+    to {
+        transform: translateX(0); /* Akhir di posisi aslinya */
+    }
+}
