@@ -1,5 +1,6 @@
 # Takugo (Otaku on the Go)
 ![Deployment](https://github.com/PBP-C04/Takugo/actions/workflows/pbp-deploy.yml/badge.svg)
+Check it out [here](http://takugo-c04-tk.pbp.cs.ui.ac.id/)
 
 - [Anggota](#👥-anggota-kelompok-c04-👥)
 - [Pembagian Tugas](#📋-pembagian-tugas-modul-📋)
