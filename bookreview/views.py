@@ -19,6 +19,9 @@ def show_main(request):
 
     if request.user.is_authenticated:
         context["name"] = request.user.username
+        
+        if request.user.user_type == "I":
+            return render(request, "unavailable.html", context)
 
     return render(request, "bookreview.html", context)
 

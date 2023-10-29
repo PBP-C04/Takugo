@@ -59,7 +59,7 @@ Berikut adalah beberapa fitur yang disediakan pada aplikasi **Takugo**:
     | *Registered User* | *Non-Registered User* |
     | --- | --- |
     | Mengakses catatan khusus untuk setiap buku yang dimiliki. | Tidak dapat mengakses halaman "Book Journal". |
-    | Melihat daftar buku yang dipinjam atau dimiliki. ||
+    | Melihat daftar buku yang dimiliki. ||
 
 * ### Beli Buku 🛍️
     *Registered user* dapat melakukan pembelian buku yang telah disediakan pada aplikasi **Takugo**. Melalui fitur "Beli Buku", kami mengharapkan masyarakat pecinta manga atau komik dapat memiliki kemudahan akses membaca atau membeli komik-komik yang sulit ditemukan secara offline.

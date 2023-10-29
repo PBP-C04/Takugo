@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block meta %}
-<title>Book List</title>
+<title>Book Review</title>
 {% endblock meta %}
 
 {% block content %}
@@ -18,7 +18,7 @@
             <div class="card-body">
                 <!-- <div id="book_list" class="container mt-4"> -->
                 <label class="fw-normal fs-6" for="filter">Filter Book Type:</label>
-                <select id="filter" name="filter" class="form-select mb-3" onchange="refreshList(this.value);" style="width: 125px; display: inline-block;">
+                <select id="filter" name="filter" class="form-select mb-3" onchange="refreshList(this.value);" style="width: 175px; display: inline-block;">
                     <option value="none" selected>None</option>
                     <option value="MGA">Manga</option>
                     <option value="LNV">Light-Novel</option>
