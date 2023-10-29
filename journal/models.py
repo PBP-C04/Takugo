@@ -11,5 +11,4 @@ class BookJournal(models.Model):
     notes = models.TextField()
     favorite_quotes = models.TextField()
     rating = models.IntegerField()
-    date_started = models.DateField(default=timezone.now)
-    date_finished = models.DateField(default=timezone.now)
+    date_added = models.DateField(auto_now_add=True, null=True)
