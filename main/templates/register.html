@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block meta %}
 <title>Register</title>
@@ -8,35 +9,92 @@
 <main id="main">
     <section class="breadcrumbs">
         <div class="container">
+
             <div class="d-flex justify-content-between align-items-center">
                 <h2>Register</h2>
             </div>
+
         </div>
     </section>
 
     <section class="inner-page">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <form method="POST" action="">
-                        {% csrf_token %}
-                        <table class="table table-responsive-lg">
-                            <tbody>
-                                {{ form.as_table }}
-                            </tbody>
-                        </table>
-
-                        <div class="text-center mt-3">
-                            <button type="submit" class="btn btn-warning btn-lg">Register</button>
+            <section class="h-100 bg-dark">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col">
+                            <div class="card card-registration my-4">
+                                <div class="row g-0">
+                                        <div class="col-xl-6 d-none d-xl-block">
+                                            <img src="{% static 'img/testimonials/anime2.jpg' %}" class="testimonial-img"
+                                                alt="Sample photo" class="img-fluid"
+                                                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                                        </div>
+                                    <div class="col-xl-6">
+                                        <div class="card-body p-md-5 text-black">
+                                            <h3 class="mb-5 text-uppercase">Sign Up</h3>
+        
+                                            <form method="POST" action="" class="form">
+                                                {% csrf_token %}
+        
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-4">
+                                                        <div class="form-outline">
+                                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                                            Username
+                                                            {{ form.username }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-4">
+                                                        <div class="form-outline">
+                                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                                            Password
+                                                            {{ form.password1 }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-4">
+                                                        <div class="form-outline">
+                                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                                                            Confirmation Password
+                                                            {{ form.password2 }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-4">
+                                                        <div class="form-outline">
+                                                            <i class="fas fa-users fa-lg me-3 fa-fw"></i>
+                                                            User Type
+                                                            {{ form.user_type }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+        
+                                                <div class="my-3">
+                                                    {% for field in form %}
+                                                        {% for error in field.errors %}
+                                                            <div class="mx-auto text-center text-danger">{{ error }}</div>
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                                </div>                                                
+        
+                                                <div class="d-flex justify-content-center mt-3">
+                                                    <button type="submit" class="btn btn-warning btn-lg">Register</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </form>
-
-                    <div class="text-center mt-3">
-                        <p>Already have an account? <a style="color: #f8be12;" href="{% url 'main:login' %}" class="btn btn-link">Login</a></p>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </section>
 </main>
+
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock content %}
