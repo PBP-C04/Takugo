@@ -2,7 +2,6 @@
 **/*.pyo
 **/*.mo
 **/*.db
-**/*.css.map
 **/*.egg-info
 **/*.sql.gz
 **/__pycache__/
