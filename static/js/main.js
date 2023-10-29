@@ -291,3 +291,37 @@
   new PureCounter();
 
 })()
+
+$(document).ready(function() {
+  $(".comment-form").submit(function(event) {
+      event.preventDefault();
+      var form = $(this);
+      var url = form.attr('action');
+      $.post(url, form.serialize(), function(data) {
+          var comment = data.text;
+          var threadId = data.thread_id;
+          var commentElement = '<p>' + comment + '</p>';
+          $('.comments-' + threadId).append(commentElement);
+      });
+      form.trigger('reset');
+  });
+});
+
+const form = document.querySelector('#comment-form');
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const threadId = form.getAttribute('data-thread-id');
+    fetch(`/forum/add_comment/${threadId}/`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
