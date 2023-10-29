@@ -32,23 +32,21 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-4">
-                    <div class="footer-links">
-                        <h4>Our Features</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul>
-                                    <li><i class="bx bx-cart"></i> <a href="{% url 'books:show_main' %}">Buy Books</a></li>
-                                    <li><i class="bx bx-star"></i> <a href="{% url 'bookreview:show_main' %}">Review Books</a></li>
-                                    <li><i class="bx bx-book-open"></i> <a href="{% url 'journal:show_main' %}">Book Journal</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul>
-                                    <li><i class="bx bx-donate-heart"></i> <a href="#">Donate Books</a></li>
-                                    <li><i class="bx bx-chat"></i> <a href="{% url 'main:coming-soon' %}">Forum Discussion</a></li>
-                                </ul>
-                            </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Our Services</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><i class="bx bx-cart"></i> <a href="{% url 'books:show_main' %}">Buy Books</a></li>
+                                <li><i class="bx bx-star"></i> <a href="{% url 'bookreview:show_main' %}">Review Books</a></li>
+                                <li><i class="bx bx-book-open"></i> <a href="{% url 'journal:show_main' %}">Book Journal</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><i class="bx bx-donate-heart"></i> <a href="{% url 'donate:show_donatepage' %}">Donate Books</a></li>
+                                <li><i class="bx bx-chat"></i> <a href="{% url 'main:coming-soon' %}">Forum Discussion</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>

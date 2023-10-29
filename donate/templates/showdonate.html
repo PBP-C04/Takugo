@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Book Donation</title>
+{% endblock meta %}
+
+{% block content %}
+<main id="main">
+
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Login</h2>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="inner-page">
+        <div class="container">
+
+            <h2>Welcome, {{ name }}</h2>
+
+                {% if user_type == 'U' %}
+                <div>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Donate Book</button>
+                </div>
+                {% endif %}
+
+                
+                <div class="row" id="donated_cards">
+                    <!-- Menampilkan buku yang telah didonasikan-->
+                </div>
+                
+                <!-- Modal -->
+                    <div class = "modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class = "modal-dialog">
+                            <div class = "modal-content">
+                                <div class = "modal-header">
+                                    <h1 class = "modal-title fs-5" id="exampleModalLabel">Donate Book</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                
+                                <div class = "modal-body">
+                                    <form id="form" onsubmit="return false;">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label for="name" class="col-form-label">Buku:</label>
+                                            <select class="form-control" id="book" name="book">
+                                                {% for book in books %}
+                                                    <option value="{{ book.id }}">{{ book.title }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="lembaga" class="col-form-label">Lembaga:</label>
+                                            <select class="form-control" id="lembaga" name="lembaga">
+                                                {% for lem in lembaga %}
+                                                    <option value="{{ lem.id }}">{{ lem.username }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p id="kondisi">{{ donate_form }} </p>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                <div class = "modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Donate Book</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    </section>
+</main>
+    
+<script>
+    var user_type = "{{ user_type }}";
+
+    async function showDonateUser() {
+        return fetch("{% url 'donate:show_donate_user' %}").then((res) => res.json())
+    }
+
+    async function showDonateLembaga() {
+        return fetch("{% url 'donate:show_donate_lembaga' %}").then((res) => res.json())
+    }
+
+    async function refreshProducts() {
+    document.getElementById("donated_cards").innerHTML = ""
+    const donated = user_type === 'U' ? await showDonateUser() : await showDonateLembaga()
+
+    if (donated.length === 0) {
+        document.getElementById("donated_cards").innerHTML = "<p>Belum ada buku yang didonasikan</p>";
+    } else if (user_type === 'U') {
+        donated.forEach((item) => {
+            const cardHtml = `
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">Institution: ${item.lembaga}</p>
+                        <p class="card-text">Kondisi: ${item.kondisi}</p>
+                        <p class="card-text">Date Donated: ${item.donated_date}</p>
+                    </div>
+                </div>
+            </div>`;
+
+            document.getElementById("donated_cards").innerHTML += cardHtml;
+            });
+        } else {
+        donated.forEach((item) => {
+            const cardHtml = `
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">Donated By: ${item.donatur}</p>
+                        <p class="card-text">Kondisi: ${item.kondisi}</p>
+                        <p class="card-text">Date Donated: ${item.donated_date}</p>
+                    </div>
+                </div>
+            </div>`;
+
+            document.getElementById("donated_cards").innerHTML += cardHtml;
+            });
+        }
+    }
+
+    refreshProducts();
+
+    function addDonate() {
+        fetch("{% url 'donate:add_donate' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector("#form"))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false;
+    }
+
+    document.getElementById("button_add").onclick = addDonate;
+
+</script>    
+{% endblock content %}
