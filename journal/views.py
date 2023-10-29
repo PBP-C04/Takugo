@@ -13,6 +13,9 @@ def show_main(request: HttpRequest) -> HttpResponse:
     context = {
         "name": request.user.username,
     }
+    
+    if request.user.user_type == "I":
+        return render(request, "unavailable.html", context)
 
     return render(request, "journal.html", context)
 

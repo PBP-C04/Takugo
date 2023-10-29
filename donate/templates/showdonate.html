@@ -6,33 +6,27 @@
 
 {% block content %}
 <main id="main">
-
     <section class="breadcrumbs">
         <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Login</h2>
-            </div>
-
+            <h2 style="text-align: center;">Welcome to Donate Book Section</h2>
         </div>
     </section>
 
     <section class="inner-page">
         <div class="container">
 
-            <h2>Welcome, {{ name }}</h2>
+            <h2>Welcome, {{ name }}!</h2>
 
-                {% if user_type == 'U' %}
-                <div>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Donate Book</button>
-                </div>
-                {% endif %}
-
-                
                 <div class="row" id="donated_cards">
                     <!-- Menampilkan buku yang telah didonasikan-->
                 </div>
-                
+
+                {% if user_type == 'U' %}
+                <div>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-top: 10px;">Donate Book</button>
+                </div>
+                {% endif %}
+
                 <!-- Modal -->
                     <div class = "modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class = "modal-dialog">

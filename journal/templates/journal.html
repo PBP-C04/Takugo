@@ -9,15 +9,15 @@
 <main id="main">
     <section class="breadcrumbs">
         <div class="container">
-            <h2 style="text-align: center; font-weight: bold;">{{ name }}' Journal</h2>
+            <h2 style="text-align: center;">{{ name }}'s Journal</h2>
         </div>
     </section>
 
     <section class="inner-page">
-        <div class="card">
+        <div id="book_list" class="card">
             <div class="card-body">
                 <label class="fw-normal fs-6" for="filter">Filter Book Type:</label>
-                <select class="form-select mb-3" id="filter" name="filter" onchange="refreshList(this.value);" style="width: 125px; display: inline-block;">
+                <select class="form-select mb-3" id="filter" name="filter" onchange="refreshBookList(this.value, undefined);" style="width: 175px; display: inline-block;">
                     <option value="none" selected>None</option>
                     <option value="MGA">Manga</option>
                     <option value="LNV">Light-Novel</option>
@@ -27,8 +27,12 @@
                     <option value="NVL">Novel</option>
                     <option value="OTH">Other</option>
                 </select>
-                <table id="list">
-                </table>
+                <label class="fw-normal fs-6 ms-5" for="book-bought">View:</label>
+                <select class="form-select mb-3" id="book-bought" name="book-bought" onchange="refreshBookList(undefined, this.value);" style="width: 175px; display: inline-block;">
+                    <option value="all" selected>All Books</option>
+                    <option value="bought">Bought Books</option>
+                </select>
+                <table id="list"></table>
             </div>
         </div>
     </section>

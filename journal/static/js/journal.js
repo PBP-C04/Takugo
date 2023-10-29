@@ -3,8 +3,12 @@ async function getBookList(filter) {
         .then((res) => res.json());
 }
 
-async function refreshList(filter) {
-    const books = await getBookList(filter);
+async function getBoughtBook(filter) {
+    return fetch(`api/book-bought?filter=${filter}`)
+        .then((res) => res.json());
+}
+
+async function refreshList(books, all) {
     const BOOK_TYPES = {
         "MGA": "Manga",
         "LNV": "Light-Novel",
@@ -43,4 +47,14 @@ async function refreshList(filter) {
     });
     document.getElementById("list").innerHTML = htmlString;
 }
-refreshList("none");
+
+async function refreshBookList(filter, all) {
+    if (filter !== undefined) {
+        all = document.getElementById("book-bought").value;
+    } else if (all !== undefined) {
+        filter = document.getElementById("filter").value;
+    }
+    const books = all === "all" ? await getBookList(filter) : await getBoughtBook(filter);
+    refreshList(books, all);
+}
+refreshBookList("none", "all");
