@@ -5,9 +5,38 @@
 {% endblock meta %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit">
-</form>
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Register</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="inner-page">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <table class="table table-responsive-lg">
+                            <tbody>
+                                {{ form.as_table }}
+                            </tbody>
+                        </table>
+
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-warning btn-lg">Register</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a style="color: #f8be12;" href="{% url 'main:login' %}" class="btn btn-link">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 {% endblock content %}
