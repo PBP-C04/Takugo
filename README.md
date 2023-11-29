@@ -1,4 +1,7 @@
 # Takugo (Otaku on the Go)
+![Deployment](https://github.com/PBP-C04/Takugo/actions/workflows/pbp-deploy.yml/badge.svg)
+Check it out [here](http://takugo-c04-tk.pbp.cs.ui.ac.id/)
+
 - [Anggota](#👥-anggota-kelompok-c04-👥)
 - [Pembagian Tugas](#📋-pembagian-tugas-modul-📋)
 - [Latar Belakang](#👘-latar-belakang-takugo-👘)
@@ -56,7 +59,7 @@ Berikut adalah beberapa fitur yang disediakan pada aplikasi **Takugo**:
     | *Registered User* | *Non-Registered User* |
     | --- | --- |
     | Mengakses catatan khusus untuk setiap buku yang dimiliki. | Tidak dapat mengakses halaman "Book Journal". |
-    | Melihat daftar buku yang dipinjam atau dimiliki. ||
+    | Melihat daftar buku yang dimiliki. ||
 
 * ### Beli Buku 🛍️
     *Registered user* dapat melakukan pembelian buku yang telah disediakan pada aplikasi **Takugo**. Melalui fitur "Beli Buku", kami mengharapkan masyarakat pecinta manga atau komik dapat memiliki kemudahan akses membaca atau membeli komik-komik yang sulit ditemukan secara offline.

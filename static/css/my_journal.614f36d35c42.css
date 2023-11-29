@@ -1,0 +1,186 @@
+.journal-title{
+    text-align: center;
+}
+
+.inner-page {
+    padding: 0px;
+}
+
+/* Style for the entire page */
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+}
+
+hr {
+    margin: 15px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+/* Style for the modal dialog */
+.modal-content {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.modal-header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.modal-body p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.modal-footer {
+    padding: 10px 0;
+}
+
+/* Style for buttons */
+.btn {
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.col-md-4.card p {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.date-added {
+    color: #333; /* Blue color for Date Started */
+    font-weight: bold;
+}
+
+
+.notes {
+    font-size: x-large;
+    font-weight: bold;
+    color: #333;
+}
+
+.favorite-quotes {
+    font-size: x-large;
+    font-weight: bold;
+    color: #333;
+}
+
+.favorite-quotes-body {
+    margin-bottom: 50px;
+}
+
+.rating {
+    color: #ffc107; /* Yellow color for Rating */
+    font-weight: bold;
+    text-align: center;
+    font-size: larger;
+}
+
+.no-entry {
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.journal-body {
+    margin: 0px 40px 0px 35px;
+}
+
+#start-journal-button {
+    display: block;
+    margin: 0 auto; /* Ini akan membuat tombol tetap berada di tengah */
+    text-align: center; /* Ini akan membuat teks dalam tombol tetap berada di tengah */
+}
+
+#delete-journal-button {
+    margin: 0 auto; /* Ini akan membuat tombol tetap berada di tengah */
+    margin-top: 10px;
+    text-align: center; /* Ini akan membuat teks dalam tombol tetap berada di tengah */
+}
+
+.form-control {
+    border: 2px solid #ffae00; /* Ganti warna dan lebar border sesuai kebutuhan Anda */
+    border-radius: 5px; /* Ganti radius sudut sesuai kebutuhan Anda */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.icon-back:hover {
+    color: #212529 !important; /* Mengubah warna ikon menjadi hitam saat hover */
+}
+
+.note-quote-body {
+    background-color: #ffc2679e; /* Warna latar belakang */
+    border: 1px solid #38352f; /* Garis tepi */
+    padding: 10px; /* Ruang dalam */
+    margin-bottom: 10px; /* Jarak antara "Notes" dan "Favorite Quotes" */
+    border-radius: 5px; /* Sudut bulat */
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Raleway', sans-serif; 
+}
+
+h2, .notes, .favorite-quotes, .rating, .no-entry, .modal-title {
+    font-family: 'Raleway', sans-serif; 
+    transition: ease-in-out 0.5s;
+}
+
+.journal-body, .no-entry {
+    font-family: 'Raleway', sans-serif;
+    animation: slideIn 0.7s ease-in-out; /* Menambahkan animasi slideIn dengan durasi 1 detik */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20%); /* Mulai dari posisi tersembunyi di luar layar sebelah kiri */
+    }
+    to {
+        transform: translateX(0); /* Akhir di posisi aslinya */
+    }
+}

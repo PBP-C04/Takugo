@@ -1,5 +1,5 @@
 from django.urls import path
-from bookreview.views import show_main, get_book_list, add_review, show_bookreview, review_json, delete_review, get_review_count
+from bookreview.views import show_main, get_book_list, add_review, show_bookreview, review_json, delete_review, get_data_count, update_data_count
 
 app_name = "bookreview"
 
@@ -10,5 +10,6 @@ urlpatterns = [
     path("show-bookreview/<int:book_id>", show_bookreview, name="show_bookreview"),
     path("review-json/<int:book_id>", review_json, name="review_json"),
     path("delete-review/<int:id>", delete_review, name="delete_review"),
-    path('review_count/<int:book_id>/', get_review_count, name='review_count'),
+    path('data_count/<int:book_id>/', get_data_count, name='data_count'),
+    path('update_data_count/<int:book_id>/', update_data_count, name='update_data_count'),
 ]

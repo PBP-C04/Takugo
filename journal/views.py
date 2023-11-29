@@ -13,6 +13,9 @@ def show_main(request: HttpRequest) -> HttpResponse:
     context = {
         "name": request.user.username,
     }
+    
+    if request.user.user_type == "I":
+        return render(request, "unavailable.html", context)
 
     return render(request, "journal.html", context)
 
@@ -51,18 +54,18 @@ def all_journal_json(request):
 @csrf_exempt
 def add_journal(request, id):
     if request.method == 'POST':
-        user = request.user
-        book = Book.objects.get(pk=id)
-        notes = request.POST.get("notes")
-        favorite_quotes = request.POST.get("favorite-quotes")
-        rating = request.POST.get("rating")
-        date_started = request.POST.get("date-started")
-        date_finished = request.POST.get("date-finished")
-        
-        new_journal = BookJournal(user=user, book=book, notes=notes, favorite_quotes=favorite_quotes, rating=rating, date_started=date_started, date_finished=date_finished)
-        new_journal.save()
+        form = BookJournalForm(request.POST)
+        if (form.is_valid()):
+            user = request.user
+            book = Book.objects.get(pk=id)
+            notes = request.POST.get("notes")
+            favorite_quotes = request.POST.get("favorite_quotes")
+            rating = request.POST.get("rating")
+            
+            new_journal = BookJournal(user=user, book=book, notes=notes, favorite_quotes=favorite_quotes, rating=rating)
+            new_journal.save()
 
-        return HttpResponse(b"CREATED", status=201)
+            return HttpResponse(b"CREATED", status=201)
 
     return HttpResponseNotFound()
 

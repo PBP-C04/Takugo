@@ -1,0 +1,55 @@
+/* 1. Merubah warna posted at menjadi biru dan menambahkan emoji */
+.posted-at {
+    color: blue;
+    font-size: 14px;
+    font-weight : bold;
+
+}
+/* 2. Mengkecilkan teks "Here's some reviews" */
+h5 {
+    font-size: 20px; /* Anda dapat mengatur ukuran yang Anda inginkan */
+}
+/* 3. Menambahkan emoji panah kembali ke show main */
+
+.rating{
+    color: #ffc107; /* Yellow color for Rating */
+}
+
+.delete a{
+    font-weight: bold;
+    color: #850606;
+}
+
+.btn-primary {
+    background-color: #f8be12;
+    color: #fff;
+    border: none;
+}
+
+    /* Style the form elements */
+#form {
+    padding: 20px;
+}
+
+/* Center the form within the modal */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the buttons and center them */
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+/* Margin between the buttons */
+.modal-footer button {
+    margin: 5px;
+}
+
+.reviews_notes h5 {
+    font-weight: bold;
+    margin: 5px;
+}

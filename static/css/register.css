@@ -1,0 +1,60 @@
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+
+/* Merapikan form */
+.form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* CSS untuk tampilan mobile */
+@media (max-width: 768px) {
+    /* Mengatur lebar elemen kolom pada tampilan mobile */
+    .col-md-6 {
+        width: 100%; /* Mengisi seluruh lebar layar */
+        margin-bottom: 10px; /* Spasi antara elemen */
+    }
+
+    /* Mengatur lebar elemen input pada tampilan mobile */
+    .form-outline input, .form-outline select {
+        width: 100%; /* Mengisi seluruh lebar kolom */
+    }
+
+    /* Mengatur tampilan label dan input menjadi sejajar pada tampilan mobile */
+    .form-outline i, .form-outline label, .form-outline input, .form-outline select {
+        display: block;
+        width: 100%;
+        text-align: left; /* Teks rata kiri */
+    }
+}
+
+/* Tambahan CSS jika perlu */
+
+
+/* Merapikan input dan label */
+.form-outline {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-outline i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #333; /* Warna ikon */
+}
+
+/* Merapikan tombol */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
