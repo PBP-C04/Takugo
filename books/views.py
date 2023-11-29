@@ -139,6 +139,7 @@ def get_book_bought_flutter(request: HttpRequest) -> JsonResponse:
     }, status=200)
 
 
+@csrf_exempt
 def buy_book_flutter(request: HttpRequest, id: int) -> JsonResponse:
     if not request.user.is_authenticated:
         return JsonResponse({
