@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'journal',
     'bookreview',
     'donate',
+    'authentication',
 ]
 
 AUTH_USER_MODEL = 'main.TakugoUser'
@@ -141,3 +142,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = ['https://takugo-c04-tk.pbp.cs.ui.ac.id']
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
