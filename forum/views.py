@@ -2,7 +2,7 @@ from django.shortcuts import render
 from forum.forms import PostForm, ReplyForm
 from forum.models import Post, Reply
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.contrib.auth.decorators import login_required
 from main.models import TakugoUser
 from django.core import serializers
@@ -20,7 +20,7 @@ def forum(request):
     posts = Post.objects.all()
     return render(request, "forum.html", {'posts':posts})
 
-@login_required
+@login_required(login_url='/login')
 def create_post(request):
     context = {}
     form = PostForm(request.POST or None)
@@ -60,7 +60,7 @@ def reply(request):
     replies = Reply.objects.all()
     return render(request, "reply.html", {'replies':replies})
 
-@login_required
+@login_required(login_url='/login')
 def create_reply(request, pk):    
     form = ReplyForm(request.POST or None)
     if request.method == "POST":
