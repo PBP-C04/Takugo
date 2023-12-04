@@ -106,6 +106,7 @@ def get_book_list_flutter(request: HttpRequest) -> JsonResponse:
         books = books.filter(book_type=filter)
     
     return JsonResponse({
+        "status": True,
         "books": serializers.serialize("json", books)
     }, status=200)
 
@@ -114,6 +115,7 @@ def get_book_list_flutter(request: HttpRequest) -> JsonResponse:
 def get_book_bought_flutter(request: HttpRequest) -> JsonResponse:
     if not request.user.is_authenticated:
         return JsonResponse({
+            "status": False,
             "message": "Unauthorized"
         }, status=401)
     
@@ -135,19 +137,23 @@ def get_book_bought_flutter(request: HttpRequest) -> JsonResponse:
 
     resp_json = json.dumps(resp_json)
     return JsonResponse({
+        "status": True,
         "bought_books": resp_json
     }, status=200)
 
 
+@csrf_exempt
 def buy_book_flutter(request: HttpRequest, id: int) -> JsonResponse:
     if not request.user.is_authenticated:
         return JsonResponse({
+            "status": False,
             "meesage": "Unauthorized"
         }, status=401)
 
     amt = request.POST.get("amount")
     if amt is None:
         return JsonResponse({
+            "status": False,
             "message": "Amount not found"
         }, status=400)
     
@@ -155,6 +161,7 @@ def buy_book_flutter(request: HttpRequest, id: int) -> JsonResponse:
     bought_books = BoughtBook.objects.filter(user=request.user).values("book")
     if bought_books.filter(book=book.pk).exists():
         return JsonResponse({
+            "status": False,
             "message": "Already bought this book"
         }, status=403)
     
@@ -166,11 +173,13 @@ def buy_book_flutter(request: HttpRequest, id: int) -> JsonResponse:
             amt = int(amt)
         except ValueError:
             return JsonResponse({
+                "status": False,
                 "message": "Amount must be an integer between 1-20"
             }, status=400)
 
     if amt <= 0 or amt > 20:
         return JsonResponse({
+            "status": False,
             "message": "Amount must be between 1-20"
         }, status=400)
 
@@ -181,5 +190,6 @@ def buy_book_flutter(request: HttpRequest, id: int) -> JsonResponse:
     )
     bought_book.save()
     return JsonResponse({
+        "status": True,
         "message": "Successfully bought book"
     }, status=201)
