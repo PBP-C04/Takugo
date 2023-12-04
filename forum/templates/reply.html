@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div style="margin-bottom: 20px;">
+
+        </div>
+        <div class="subforum">
+            {% if replies %}
+                <div class="subforum-title">
+                    <h1>General Information</h1>
+                </div>
+                
+                {% for reply in replies %}
+                    <div class="subforum-row">
+                        <div class="subforum-icon subforum-column center">
+                            <i class="fa fa-gamepad"></i>
+                        </div>
+                        <div class="subforum-description subforum-column">
+                            <h4><a href="{% url 'forum:reply' forum.pk%}">{{reply.post}}</a></h4>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="subforum-title">
+                    <h1><i class="fa fa-frown-o"></i>&nbsp;you have no replies yet.</h1>
+                </div>
+            {% endif %}
+
+            <a href="{% url 'reply:create_reply' %}">Create Reply from reply</a>
+        </div>        
+        
+    </div>
+
+    {% endblock content %}

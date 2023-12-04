@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div style="margin-bottom: 20px;">
+
+        </div>
+        <div class="subforum">
+            {% if posts %}
+                <div class="subforum-title">
+                    <h1>General Information</h1>
+                </div>
+                
+                {% for forum in posts %}
+                    <div class="subforum-row">
+                        <div class="subforum-icon subforum-column center">
+                            <i class="fa fa-gamepad"></i>
+                        </div>
+                        <div class="subforum-description subforum-column">
+                            <h4><a href="{% url 'forum:detail' forum.pk%}">{{forum.title}}</a></h4>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="subforum-title">
+                    <h1><i class="fa fa-frown-o"></i>&nbsp;you have no posts yet.</h1>
+                </div>
+            {% endif %}
+
+            <a href="{% url 'forum:create_post' %}">Create Post</a>
+        </div>        
+        
+    </div>
+
+    {% endblock content %}
