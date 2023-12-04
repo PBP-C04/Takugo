@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'journal',
     'bookreview',
     'donate',
-    'forum'
+    'forum',
     'authentication',
 ]
 
