@@ -24,5 +24,6 @@ urlpatterns = [
     path('journal/', include('journal.urls')),
     path('bookreview/', include('bookreview.urls')),
     path('donate/', include('donate.urls')),
+    path('forum/', include('forum.urls')),
     path('auth/', include('authentication.urls')),
 ]
