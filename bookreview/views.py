@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from main.models import TakugoUser
 from bookreview.forms import BookReviewForm
 from books.views import get_book_list
+import json
 
 # View yang menangani tampilan utama
 def show_main(request):
@@ -98,6 +99,25 @@ def update_data_count(request, book_id):
     if request.method == 'GET':
         review_count = BookReview.objects.filter(book=book_id).count()
         return HttpResponse(str(review_count))
+    
+def add_review_flutter(request):
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+        
+        new_review = BookReview.objects.create(
+            user = request.user,
+            name = data["name"],
+            comment = data["comment"],
+            rating = int (data["rating"]),
+            book = request.book,
+            date = data["date_added"],
+        )
+
+        new_review.save()
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
     
 
 
