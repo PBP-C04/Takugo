@@ -1,5 +1,5 @@
 from django.urls import path
-from bookreview.views import show_main, get_book_list, add_review, show_bookreview, review_json, delete_review, get_data_count, update_data_count
+from bookreview.views import show_main, get_book_list, add_review, show_bookreview, review_json, delete_review, get_data_count, update_data_count, add_review_flutter
 
 app_name = "bookreview"
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path("delete-review/<int:id>", delete_review, name="delete_review"),
     path('data_count/<int:book_id>/', get_data_count, name='data_count'),
     path('update_data_count/<int:book_id>/', update_data_count, name='update_data_count'),
+    path('add-review-flutter/<int:book_id>/', add_review_flutter, name="add_review_flutter"),
 ]
