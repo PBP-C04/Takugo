@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.http import HttpRequest, HttpResponse, HttpResponseNotFound, HttpResponseForbidden
@@ -119,5 +119,16 @@ def add_review_flutter(request):
     else:
         return JsonResponse({"status": "error"}, status=401)
     
+def get_reviews_json_by_req_id(request, book_id):
+    user = request.user
+    book = get_object_or_404(Book, pk=book_id)
+    reviews = BookReview.objects.filter(user=user, book=book)
+    return HttpResponse(serializers.serialize("json", reviews), content_type="application/json")
+
+def get_other_review_json(request, book_id):
+    user = request.user
+    book = get_object_or_404(Book, pk=book_id)
+    reviews = BookReview.objects.filter(book=book).exclude(user)
+    return HttpResponse(serializers.serialize("json", reviews), content_type="application/json")
 
 
