@@ -106,10 +106,11 @@ from django.views.decorators.http import require_POST
 from .models import BookReview, Book
 
 @require_POST
-def add_review_flutter(request, book_id):
+def add_review_flutter(request):
     data = json.loads(request.body)
 
     # Get the book using book_id or return 404 if not found
+    book_id=data.get('bookID')
     book = get_object_or_404(Book, pk=book_id)
 
     new_review = BookReview.objects.create(
