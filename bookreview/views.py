@@ -100,24 +100,31 @@ def update_data_count(request, book_id):
         review_count = BookReview.objects.filter(book=book_id).count()
         return HttpResponse(str(review_count))
     
-def add_review_flutter(request):
-    if request.method == 'POST':
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from .models import BookReview, Book
 
-        data = json.loads(request.body)
-        
-        new_review = BookReview.objects.create(
-            user = request.user,
-            name = data["name"],
-            comment = data["comment"],
-            rating = int (data["rating"]),
-            book = request.book,
-            date = data["date_added"],
-        )
+@require_POST
+def add_review_flutter(request, book_id):
+    data = json.loads(request.body)
 
-        new_review.save()
-        return JsonResponse({"status": "success"}, status=200)
-    else:
-        return JsonResponse({"status": "error"}, status=401)
+    # Get the book using book_id or return 404 if not found
+    book = get_object_or_404(Book, pk=book_id)
+
+    new_review = BookReview.objects.create(
+        user=request.user,
+        name=data["name"],
+        comment=data["comment"],
+        rating=int(data["rating"]),
+        book=book,  # Associate the review with the specific book
+        date=data["date_added"],
+    )
+
+    new_review.save()
+    
+    return JsonResponse({"status": "success"}, status=200)
+
     
 def get_reviews_json_by_req_id(request, book_id):
     user = request.user
