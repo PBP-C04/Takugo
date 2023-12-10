@@ -110,7 +110,7 @@ def add_review_flutter(request):
     data = json.loads(request.body)
 
     # Get the book using book_id or return 404 if not found
-    book_id=data.get('bookID')
+    book_id=data.get('bookId')
     book = get_object_or_404(Book, pk=book_id)
 
     new_review = BookReview.objects.create(
