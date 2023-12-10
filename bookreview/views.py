@@ -118,7 +118,6 @@ def add_review_flutter(request):
         comment=data["comment"],
         rating=int(data["rating"]),
         book=book,  # Associate the review with the specific book
-        date=datetime.now,
     )
 
     new_review.save()
