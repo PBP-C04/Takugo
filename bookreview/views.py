@@ -115,7 +115,6 @@ def add_review_flutter(request):
 
     new_review = BookReview.objects.create(
         user=request.user,
-        name=data["name"],
         comment=data["comment"],
         rating=int(data["rating"]),
         book=book,  # Associate the review with the specific book
