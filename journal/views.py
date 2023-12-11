@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponseNotFound, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -6,6 +6,8 @@ from django.core import serializers
 from django.http import JsonResponse
 from journal.models import BookJournal, Book
 from journal.forms import BookJournalForm
+
+import json
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -69,7 +71,35 @@ def add_journal(request, id):
 
     return HttpResponseNotFound()
 
+@csrf_exempt
 def delete_journal(request, id):
     journal = BookJournal.objects.filter(user=request.user, book=id)
     journal.delete()
     return JsonResponse({'message': 'Journal deleted successfully'}, status=200)
+
+@csrf_exempt
+def add_journal_flutter(request: HttpRequest, id: int) -> JsonResponse:
+    if not request.user.is_authenticated:
+        return JsonResponse({
+            "status": False,
+            "meesage": "Unauthorized"
+        }, status=401)
+    
+    book = get_object_or_404(Book, pk=id)
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_journal = BookJournal.objects.create(
+            user = request.user,
+            book = book,
+            notes = data["notes"],
+            favorite_quotes = data["favorite_quotes"],
+            rating = int(data["rating"]),
+        )
+
+        new_journal.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
