@@ -100,18 +100,16 @@ def update_data_count(request, book_id):
         review_count = BookReview.objects.filter(book=book_id).count()
         return HttpResponse(str(review_count))
     
-from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from .models import BookReview, Book
 
+@csrf_exempt
 @require_POST
 def add_review_flutter(request):
     data = json.loads(request.body)
 
     # Get the book using book_id or return 404 if not found
-    book_id=data.get('bookId')
-    book = get_object_or_404(Book, pk=book_id)
+    book_id=data['bookId']
+    book = Book.objects.get(pk=book_id)
 
     new_review = BookReview.objects.create(
         user=request.user,
