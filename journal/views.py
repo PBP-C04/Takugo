@@ -82,7 +82,7 @@ def add_journal_flutter(request: HttpRequest, id: int) -> JsonResponse:
     if not request.user.is_authenticated:
         return JsonResponse({
             "status": False,
-            "meesage": "Unauthorized"
+            "message": "Unauthorized"
         }, status=401)
     
     book = get_object_or_404(Book, pk=id)
@@ -90,6 +90,9 @@ def add_journal_flutter(request: HttpRequest, id: int) -> JsonResponse:
         
         data = json.loads(request.body)
 
+        book_id=data['bookId']
+        book = Book.objects.get(pk=book_id)
+        
         new_journal = BookJournal.objects.create(
             user = request.user,
             book = book,
