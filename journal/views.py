@@ -79,7 +79,7 @@ def delete_journal(request, id):
     return JsonResponse({'message': 'Journal deleted successfully'}, status=200)
 
 @csrf_exempt
-def add_journal_flutter(request: HttpRequest, id: int) -> JsonResponse:
+def add_journal_flutter(request, id):
     if not request.user.is_authenticated:
         return JsonResponse({
             "status": False,
