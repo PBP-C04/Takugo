@@ -45,6 +45,7 @@ def show_journal(request, id):
         
     return render(request, "my_journal.html", context)
 
+@csrf_exempt
 def get_journal_json(request, id):
     journal_item = BookJournal.objects.filter(book=id, user=request.user)
     return HttpResponse(serializers.serialize('json', journal_item))
@@ -78,7 +79,7 @@ def delete_journal(request, id):
     return JsonResponse({'message': 'Journal deleted successfully'}, status=200)
 
 @csrf_exempt
-def add_journal_flutter(request: HttpRequest, id: int) -> JsonResponse:
+def add_journal_flutter(request, id):
     if not request.user.is_authenticated:
         return JsonResponse({
             "status": False,
@@ -89,9 +90,6 @@ def add_journal_flutter(request: HttpRequest, id: int) -> JsonResponse:
     if request.method == 'POST':
         
         data = json.loads(request.body)
-
-        book_id=data['bookId']
-        book = Book.objects.get(pk=book_id)
         
         new_journal = BookJournal.objects.create(
             user = request.user,
