@@ -62,9 +62,8 @@ def register(request: HttpRequest) -> JsonResponse:
         user = TakugoUser.objects.create_user(
             username=username,
             password=password,
-            # user_type=user_type
+            user_type=user_type
         )
-        user.user_type = user_type
         user.save()
         return JsonResponse({
             "status": True,
