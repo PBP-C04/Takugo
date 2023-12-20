@@ -79,9 +79,18 @@ def create_reply(request, pk):
     }
     return render(request, "create_reply.html", context)
 
-def show_reply_json(request):
-    data = Reply.objects.all()
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+def show_reply_json(request, pk):
+    print(pk)
+    post = get_object_or_404(Post, pk=pk)
+    # post = Post.objects.get(pk=pk)
+    data = Reply.objects.filter(post=post)
+    print(post)
+    # data = Reply.objects.all()
+    print(data)
+    return JsonResponse({
+        "status": True,
+        "reply": serializers.serialize("json", data)
+    }, status=200)
 
 def show_post_json(request):
     data = Post.objects.all()
@@ -92,26 +101,52 @@ def show_post_json(request):
     }, status=200)
 
 @csrf_exempt
-def create_post_flutter(request, id):
+def create_post_flutter(request):
     if not request.user.is_authenticated:
         return JsonResponse({
             "status": False,
             "message": "Unauthorized"
         }, status=401)
     
-    post = get_object_or_404(Post, pk=id)
     if request.method == 'POST':
         
         data = json.loads(request.body)
-        
-        new_journal = Post.objects.create(
-            user = request.user,
-            post = post,
+        print(data)
+        new_forum = Post.objects.create(
+            author = request.user,
             title = data["title"],
             content = data["content"],
         )
 
-        new_journal.save()
+        new_forum.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+
+@csrf_exempt
+def create_reply_flutter(request, pk):
+    print("hai")
+    if not request.user.is_authenticated:
+        return JsonResponse({
+            "status": False,
+            "message": "Unauthorized"
+        }, status=401)
+    
+    post = get_object_or_404(Post, pk=pk)
+
+    print(post)
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+        
+        new_replies = Reply.objects.create(
+            author = request.user,
+            post = post,
+            content = data["content"],
+        )
+
+        new_replies.save()
 
         return JsonResponse({"status": "success"}, status=200)
     else:
