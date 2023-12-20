@@ -33,7 +33,7 @@ class Book(models.Model):
 
 class BoughtBook(models.Model):
     user = models.ForeignKey(TakugoUser, on_delete=models.CASCADE)
-    book = models.OneToOneField(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     amount = models.SmallIntegerField(
         default=1, 
         validators=[
