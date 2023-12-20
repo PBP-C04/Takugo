@@ -2,7 +2,7 @@ from django.shortcuts import render
 from forum.forms import PostForm, ReplyForm
 from forum.models import Post, Reply
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, JsonResponse
 from django.contrib.auth.decorators import login_required
 from main.models import TakugoUser
 from django.core import serializers
@@ -74,7 +74,6 @@ def create_reply(request, pk):
             return redirect("forum:detail", pk=pk)
     context = {
         "form" : form,
-        "title": "Takugo: Create Reply"
     }
     return render(request, "create_reply.html", context)
 
@@ -82,3 +81,10 @@ def show_reply_json(request):
     data = Reply.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
+def show_post_json(request):
+    data = Post.objects.all()
+
+    return JsonResponse({
+        "status": True,
+        "post": serializers.serialize("json", data)
+    }, status=200)
