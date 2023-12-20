@@ -2,10 +2,13 @@ from django.shortcuts import render
 from forum.forms import PostForm, ReplyForm
 from forum.models import Post, Reply
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, JsonResponse
 from django.contrib.auth.decorators import login_required
 from main.models import TakugoUser
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, get_object_or_404
+import json
 
 # Create your views here.
 
@@ -35,7 +38,6 @@ def create_post(request):
             return redirect("forum:forum")
     context.update({
         "form": form,
-        "title": "Takugo: Create New Post"
     })
     return render(request, "create_post.html", context)
 
@@ -74,11 +76,78 @@ def create_reply(request, pk):
             return redirect("forum:detail", pk=pk)
     context = {
         "form" : form,
-        "title": "Takugo: Create Reply"
     }
     return render(request, "create_reply.html", context)
 
-def show_reply_json(request):
-    data = Reply.objects.all()
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+def show_reply_json(request, pk):
+    print(pk)
+    post = get_object_or_404(Post, pk=pk)
+    # post = Post.objects.get(pk=pk)
+    data = Reply.objects.filter(post=post)
+    print(post)
+    # data = Reply.objects.all()
+    print(data)
+    return JsonResponse({
+        "status": True,
+        "reply": serializers.serialize("json", data)
+    }, status=200)
 
+def show_post_json(request):
+    data = Post.objects.all()
+
+    return JsonResponse({
+        "status": True,
+        "post": serializers.serialize("json", data)
+    }, status=200)
+
+@csrf_exempt
+def create_post_flutter(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({
+            "status": False,
+            "message": "Unauthorized"
+        }, status=401)
+    
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+        print(data)
+        new_forum = Post.objects.create(
+            author = request.user,
+            title = data["title"],
+            content = data["content"],
+        )
+
+        new_forum.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+
+@csrf_exempt
+def create_reply_flutter(request, pk):
+    print("hai")
+    if not request.user.is_authenticated:
+        return JsonResponse({
+            "status": False,
+            "message": "Unauthorized"
+        }, status=401)
+    
+    post = get_object_or_404(Post, pk=pk)
+
+    print(post)
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+        
+        new_replies = Reply.objects.create(
+            author = request.user,
+            post = post,
+            content = data["content"],
+        )
+
+        new_replies.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
