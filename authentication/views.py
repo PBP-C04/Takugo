@@ -64,6 +64,7 @@ def register(request: HttpRequest) -> JsonResponse:
             password=password,
             user_type=user_type
         )
+        user.save()
         return JsonResponse({
             "status": True,
             "message": "Successfully created an account!"

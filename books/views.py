@@ -138,7 +138,7 @@ def get_book_bought_flutter(request: HttpRequest) -> JsonResponse:
     resp_json = json.dumps(resp_json)
     return JsonResponse({
         "status": True,
-        "bought_books": resp_json
+        "books": resp_json
     }, status=200)
 
 
@@ -147,14 +147,20 @@ def buy_book_flutter(request: HttpRequest, id: int) -> JsonResponse:
     if not request.user.is_authenticated:
         return JsonResponse({
             "status": False,
-            "meesage": "Unauthorized"
+            "message": "Only logged in user can buy books"
         }, status=401)
+    
+    if request.user.is_institution():
+        return JsonResponse({
+            "status": False,
+            "message": "This user type cannot buy books"
+        }, status=403)
 
     amt = request.POST.get("amount")
     if amt is None:
         return JsonResponse({
             "status": False,
-            "message": "Amount not found"
+            "message": "Amount cannot be empty"
         }, status=400)
     
     book = get_object_or_404(Book, pk=id)
