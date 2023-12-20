@@ -6,6 +6,9 @@ from django.http import HttpResponse, HttpRequest, JsonResponse
 from django.contrib.auth.decorators import login_required
 from main.models import TakugoUser
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, get_object_or_404
+import json
 
 # Create your views here.
 
@@ -35,7 +38,6 @@ def create_post(request):
             return redirect("forum:forum")
     context.update({
         "form": form,
-        "title": "Takugo: Create New Post"
     })
     return render(request, "create_post.html", context)
 
@@ -88,3 +90,29 @@ def show_post_json(request):
         "status": True,
         "post": serializers.serialize("json", data)
     }, status=200)
+
+@csrf_exempt
+def create_post_flutter(request, id):
+    if not request.user.is_authenticated:
+        return JsonResponse({
+            "status": False,
+            "message": "Unauthorized"
+        }, status=401)
+    
+    post = get_object_or_404(Post, pk=id)
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+        
+        new_journal = Post.objects.create(
+            user = request.user,
+            post = post,
+            title = data["title"],
+            content = data["content"],
+        )
+
+        new_journal.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
