@@ -53,6 +53,24 @@ def add_donate(request):
 
     return HttpResponseNotFound()
 
+def show_json_donate(request):
+    book_donate = BookDonate.objects.all()
+    donated_list = []
+    for book in book_donate:
+        kondisi = book.kondisi
+        donatur = TakugoUser.objects.get(pk=book.donatur.id).username
+        lembaga = TakugoUser.objects.get(pk=book.lembaga.id).username
+        title = Book.objects.get(pk=book.book.id).title
+        donated_date = str(book.tanggal_donasi)
+        donated_list.append({"title":title,"kondisi":kondisi,"donatur":donatur,"lembaga":lembaga,"donated_date":donated_date})
+
+    data = json.dumps(donated_list)
+    return HttpResponse(data, content_type='application/json')
+
+def show_json(request):
+    data = BookDonate.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
 def show_donate_user(request):
     book_donate = BookDonate.objects.filter(donatur=request.user)
     donated_list = []
@@ -78,3 +96,41 @@ def show_donate_lembaga(request):
 
     data = json.dumps(donated_list)
     return HttpResponse(data, content_type='application/json')
+
+@csrf_exempt
+def add_donate_flutter(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+
+        new_donate = BookDonate.objects.create(
+            donatur = request.user,
+            book = data["book"],
+            lembaga = data["lembaga"],
+            kondisi = data["kondisi"]
+        )
+        new_donate.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+    
+def endpoint_for_lembaga(request):
+    if request.method == 'GET':
+        # Ambil daftar lembaga dengan user_type 'I'
+        lembaga = TakugoUser.objects.filter(user_type='I')
+        lembaga_list = [u.username for u in lembaga]  # Misalnya, ambil nama lembaga sebagai contoh
+        
+        return JsonResponse(lembaga_list, safe=False)  # Mengembalikan daftar nama lembaga dalam format JSON
+    else:
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+    
+@login_required(login_url='/login')
+def endpoint_for_books(request):
+    if request.method == 'GET':
+        # Ambil daftar buku yang telah dibeli oleh pengguna saat ini
+        bought_books = BoughtBook.objects.filter(user=request.user)
+        books = [b.book.title for b in bought_books]  # Misalnya, ambil judul buku sebagai contoh
+        
+        return JsonResponse(books, safe=False)  # Mengembalikan daftar judul buku dalam format JSON
+    else:
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
